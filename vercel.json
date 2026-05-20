@@ -1,5 +1,5 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm install && next build",
+  "buildCommand": "npm install && npm audit fix --force && next build",
   "installCommand": "npm install"
 }
