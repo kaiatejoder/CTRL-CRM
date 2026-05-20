@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Bell, Check } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Notification {
   id: string
   title: string

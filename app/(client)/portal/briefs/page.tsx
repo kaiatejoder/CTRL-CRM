@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Search, Filter } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Brief {
   id: string
   title: string

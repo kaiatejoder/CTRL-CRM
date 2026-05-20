@@ -21,7 +21,6 @@ async function main() {
       name: 'Admin User',
       password: hashedPassword,
       role: 'admin',
-      isActive: true,
     },
   })
 

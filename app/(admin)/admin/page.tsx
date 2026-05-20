@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Users, FileText, Briefcase, TrendingUp } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Stats {
   totalClients: number
   totalProjects: number

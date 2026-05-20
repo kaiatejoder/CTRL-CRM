@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Search, Plus, Edit, Mail } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Client {
   id: string
   name: string

@@ -5,6 +5,8 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Calendar, FileText, Send, Check } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Brief {
   id: string
   title: string

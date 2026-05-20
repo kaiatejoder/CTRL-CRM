@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { ArrowRight, Calendar, AlertCircle } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Brief {
   id: string
   title: string

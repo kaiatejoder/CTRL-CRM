@@ -1,0 +1,324 @@
+
+> ctrl-crm@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+▲ Next.js 16.2.6 (Turbopack)
+- Environments: .env.local, .env
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 13 errors:
+./app/(admin)/admin/briefs/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+  [90m3 |[0m [36mimport[0m { useEffect, useState } [36mfrom[0m [32m'react'[0m
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mSearch[0m, [33mPlus[0m, [33mEye[0m, [33mSend[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mBrief[0m {
+  [90m8 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/briefs/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/briefs/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/briefs/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/briefs/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(admin)/admin/clients/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+  [90m3 |[0m [36mimport[0m { useEffect, useState } [36mfrom[0m [32m'react'[0m
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mSearch[0m, [33mPlus[0m, [33mEdit[0m, [33mMail[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mClient[0m {
+  [90m8 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/clients/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/clients/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/clients/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/clients/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(admin)/admin/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+  [90m3 |[0m [36mimport[0m { useEffect, useState } [36mfrom[0m [32m'react'[0m
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mUsers[0m, [33mFileText[0m, [33mBriefcase[0m, [33mTrendingUp[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mStats[0m {
+  [90m8 |[0m   totalClients: number
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(admin)/admin/projects/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+  [90m3 |[0m [36mimport[0m { useEffect, useState } [36mfrom[0m [32m'react'[0m
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mSearch[0m, [33mPlus[0m, [33mEdit[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mProject[0m {
+  [90m8 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/projects/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/projects/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/projects/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(admin)/layout.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+  [90m4 |[0m [36mimport[0m { redirect } [36mfrom[0m [32m'next/navigation'[0m
+  [90m5 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mLogOut[0m, [33mBarChart3[0m, [33mUsers[0m, [33mFileText[0m, [33mBriefcase[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m [36mimport[0m { signOut } [36mfrom[0m [32m'next-auth/react'[0m
+  [90m8 |[0m
+  [90m9 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mAdminLayout[0m({
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/layout.tsx [Client Component Browser]
+    ./app/(admin)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/layout.tsx [Client Component SSR]
+    ./app/(admin)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(client)/layout.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+  [90m4 |[0m [36mimport[0m { redirect } [36mfrom[0m [32m'next/navigation'[0m
+  [90m5 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mLogOut[0m, [33mBell[0m, [33mHome[0m, [33mFileText[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m [36mimport[0m { signOut } [36mfrom[0m [32m'next-auth/react'[0m
+  [90m8 |[0m
+  [90m9 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mClientLayout[0m({
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(client)/layout.tsx [Client Component Browser]
+    ./app/(client)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(client)/layout.tsx [Client Component SSR]
+    ./app/(client)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(client)/portal/briefs/[id]/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+  [90m4 |[0m [36mimport[0m { useParams } [36mfrom[0m [32m'next/navigation'[0m
+  [90m5 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mArrowLeft[0m, [33mCalendar[0m, [33mFileText[0m, [33mSend[0m, [33mCheck[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m
+  [90m8 |[0m [36minterface[0m [33mBrief[0m {
+  [90m9 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(client)/portal/briefs/[id]/page.tsx [Client Component Browser]
+    ./app/(client)/portal/briefs/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(client)/portal/briefs/[id]/page.tsx [Client Component SSR]
+    ./app/(client)/portal/briefs/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(client)/portal/briefs/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+  [90m3 |[0m [36mimport[0m { useEffect, useState } [36mfrom[0m [32m'react'[0m
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mArrowLeft[0m, [33mSearch[0m, [33mFilter[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mBrief[0m {
+  [90m8 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(client)/portal/briefs/page.tsx [Client Component Browser]
+    ./app/(client)/portal/briefs/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(client)/portal/briefs/page.tsx [Client Component SSR]
+    ./app/(client)/portal/briefs/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(client)/portal/notifications/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+  [90m3 |[0m [36mimport[0m { useEffect, useState } [36mfrom[0m [32m'react'[0m
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mArrowLeft[0m, [33mBell[0m, [33mCheck[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mNotification[0m {
+  [90m8 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(client)/portal/notifications/page.tsx [Client Component Browser]
+    ./app/(client)/portal/notifications/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(client)/portal/notifications/page.tsx [Client Component SSR]
+    ./app/(client)/portal/notifications/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/(client)/portal/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+  [90m4 |[0m [36mimport[0m { useSession } [36mfrom[0m [32m'next-auth/react'[0m
+  [90m5 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mArrowRight[0m, [33mCalendar[0m, [33mAlertCircle[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m
+  [90m8 |[0m [36minterface[0m [33mBrief[0m {
+  [90m9 |[0m   id: string
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(client)/portal/page.tsx [Client Component Browser]
+    ./app/(client)/portal/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(client)/portal/page.tsx [Client Component SSR]
+    ./app/(client)/portal/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/about/page.tsx:2:1
+Module not found: Can't resolve 'lucide-react'
+  [90m1 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m2 |[0m [36mimport[0m { [33mArrowLeft[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mAboutPage[0m() {
+  [90m5 |[0m   [36mconst[0m team = [
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/page.tsx:2:1
+Module not found: Can't resolve 'lucide-react'
+  [90m1 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m2 |[0m [36mimport[0m { [33mArrowRight[0m, [33mZap[0m, [33mUsers[0m, [33mPalette[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mHome[0m() {
+  [90m5 |[0m   [36mreturn[0m (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/services/page.tsx:2:1
+Module not found: Can't resolve 'lucide-react'
+  [90m1 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m
+[31m[1m>[0m [90m2 |[0m [36mimport[0m { [33mArrowLeft[0m, [33mCheckCircle[0m } [36mfrom[0m [32m'lucide-react'[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mServicesPage[0m() {
+  [90m5 |[0m   [36mconst[0m services = [
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./app/(admin)/admin/briefs/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(admin)/admin/clients/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(admin)/admin/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(admin)/admin/projects/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(admin)/layout.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(client)/layout.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(client)/portal/briefs/[id]/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(client)/portal/briefs/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(client)/portal/notifications/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/(client)/portal/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/about/page.tsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/page.tsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/services/page.tsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

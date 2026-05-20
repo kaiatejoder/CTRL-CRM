@@ -6,12 +6,16 @@ import Link from 'next/link'
 import { LogOut, Bell, Home, FileText } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 
+export const dynamic = 'force-dynamic'
+
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const { data: session, status } = useSession()
+  const sessionResult = useSession()
+  const session = sessionResult?.data
+  const status = sessionResult?.status
 
   if (status === 'loading') {
     return (
@@ -21,7 +25,7 @@ export default function ClientLayout({
     )
   }
 
-  if (status === 'unauthenticated' || session?.user?.role === 'admin') {
+  if (status === 'unauthenticated' || !session?.user || session?.user?.role === 'admin') {
     redirect('/login')
   }
 
