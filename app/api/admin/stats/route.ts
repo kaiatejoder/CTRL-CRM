@@ -1,0 +1,25 @@
+import { prisma } from '@/lib/db'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { NextResponse } from 'next/server'
+
+export async function GET() {
+  const session = await getServerSession(authOptions)
+  if (session?.user?.role !== 'admin') {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
+  const [totalClients, totalProjects, totalBriefs, pendingBriefs] = await Promise.all([
+    prisma.user.count({ where: { role: 'client' } }),
+    prisma.project.count(),
+    prisma.brief.count(),
+    prisma.brief.count({ where: { status: { in: ['sent', 'in_progress'] } } }),
+  ])
+
+  return NextResponse.json({
+    totalClients,
+    totalProjects,
+    totalBriefs,
+    pendingBriefs,
+  })
+}
