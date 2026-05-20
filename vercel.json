@@ -1,7 +1,5 @@
 {
   "buildCommand": "next build",
-  "outputDirectory": ".next",
-  "env": [
-    "DATABASE_URL"
-  ]
+  "installCommand": "npm install",
+  "framework": "nextjs"
 }
