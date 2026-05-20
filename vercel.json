@@ -2,13 +2,6 @@
   "buildCommand": "next build",
   "outputDirectory": ".next",
   "env": [
-    "DATABASE_URL",
-    "NEXTAUTH_SECRET",
-    "NEXTAUTH_URL",
-    "EMAIL_HOST",
-    "EMAIL_PORT",
-    "EMAIL_USER",
-    "EMAIL_PASSWORD",
-    "NEXTAUTH_PROVIDERS"
+    "DATABASE_URL"
   ]
 }
