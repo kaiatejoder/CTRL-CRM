@@ -8,9 +8,17 @@ export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions)
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
+  const searchParams = new URL(req.url).searchParams
+  const limit = parseInt(searchParams.get('limit') || '50')
+  const isAdmin = session.user.role === 'admin'
+
+  const where = isAdmin ? {} : { clientId: session.user.id }
+
   const briefs = await prisma.brief.findMany({
-    where: { clientId: session.user.id },
+    where,
     include: { project: true, responses: true },
+    orderBy: { createdAt: 'desc' },
+    take: limit,
   })
 
   return NextResponse.json(briefs)
