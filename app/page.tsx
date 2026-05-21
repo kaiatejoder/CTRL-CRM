@@ -1,142 +1,161 @@
-import Link from 'next/link'
-import { ArrowRight, Zap, Users, Palette } from 'lucide-react'
+'use client'
 
-export default function Home() {
+import { useEffect } from 'react'
+
+export default function HomePage() {
+  useEffect(() => {
+    // Initialize any client-side code here
+  }, [])
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
-      {/* Navigation */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">CTRL Studio</h1>
-        <div className="flex gap-8 items-center">
-          <Link href="/services" className="text-gray-300 hover:text-white transition">
-            Services
-          </Link>
-          <Link href="/about" className="text-gray-300 hover:text-white transition">
-            About
-          </Link>
-          <Link
-            href="/login"
-            className="px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition"
-          >
-            Sign in
-          </Link>
-        </div>
-      </nav>
+    <>
+      <div className="bg-dots"></div>
+      <mi-menu></mi-menu>
 
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-8">
-        <div className="max-w-3xl space-y-6">
-          <h2 className="text-5xl sm:text-6xl font-bold leading-tight">
-            Design & Development Studio
-          </h2>
-          <p className="text-xl text-gray-300 max-w-xl">
-            We create beautiful, functional digital experiences that bring your vision to life. From branding to
-            full-stack web applications.
-          </p>
-          <div className="flex gap-4 pt-4">
-            <Link
-              href="/portal"
-              className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition flex items-center gap-2"
-            >
-              Client Portal
-              <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="/about"
-              className="px-6 py-3 border border-gray-500 text-white rounded-lg hover:bg-gray-800 transition"
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="grid sm:grid-cols-3 gap-8 pt-20 border-t border-gray-800">
-          <div>
-            <div className="text-3xl font-bold text-white mb-2">50+</div>
-            <p className="text-gray-400">Projects Completed</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-white mb-2">30+</div>
-            <p className="text-gray-400">Happy Clients</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-white mb-2">10+</div>
-            <p className="text-gray-400">Years Combined Experience</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Services Preview */}
-      <div className="bg-gray-800/50 mt-20 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-4xl font-bold mb-12">Our Services</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <Palette className="text-blue-400" size={32} />
-              <h4 className="text-xl font-bold">Branding & Design</h4>
-              <p className="text-gray-300">
-                Strategic brand identity and visual design that communicates your values and attracts your audience.
+      {/* HERO */}
+      <section className="hero-section">
+        <div className="container">
+          <div className="row align-items-center gy-5">
+            <div className="col-lg-6 order-lg-1">
+              <h1 className="hero-title">
+                Lo que tu<br />
+                <em className="marca">marca</em><br />
+                necesita.
+              </h1>
+              <p className="hero-subtitle">
+                Convertimos marcas en movimientos.
+                Rompemos esquemas, hackeamos algoritmos. Perdemos el <img src="/img/ctrlWordmark.svg" alt="CTRL" className="hero-logo" />
               </p>
+              <div className="hero-ctas">
+                <a href="/productos" className="btn-ctrl btn-ctrl-primary">Ver servicios ↗</a>
+                <a href="/empresa" className="btn-ctrl btn-ctrl-outline">Sobre nosotros</a>
+              </div>
             </div>
-            <div className="space-y-4">
-              <Zap className="text-blue-400" size={32} />
-              <h4 className="text-xl font-bold">Web Development</h4>
-              <p className="text-gray-300">
-                Modern, responsive websites and web applications built with the latest technologies and best practices.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <Users className="text-blue-400" size={32} />
-              <h4 className="text-xl font-bold">Consulting</h4>
-              <p className="text-gray-300">
-                Strategic guidance on your digital transformation, technology stack, and business objectives.
-              </p>
+            <div className="col-lg-6 order-lg-2">
+              <div className="mockup-carousel-wrapper">
+                <div className="d-flex align-items-center gap-2 mb-3">
+                  <div className="mockup-dot"></div>
+                  <span className="mockup-handle">@ctrlstudio.co</span>
+                </div>
+                <div id="mockupCarousel" className="carousel slide" data-bs-ride="carousel">
+                  <div className="carousel-indicators">
+                    <button type="button" data-bs-target="#mockupCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#mockupCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#mockupCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div className="carousel-inner">
+                    <div className="carousel-item active">
+                      <img src="/img/MOCKUP1.png" className="d-block w-100 mockup-image" alt="Branding Completo" />
+                      <div className="carousel-caption d-none d-md-block">
+                        <button className="mockup-btn">BRANDING COMPLETO ↗</button>
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <img src="/img/MOCKUP1.png" className="d-block w-100 mockup-image" alt="Identidad Visual" />
+                      <div className="carousel-caption d-none d-md-block">
+                        <button className="mockup-btn">IDENTIDAD VISUAL ↗</button>
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <img src="/img/MOCKUP1.png" className="d-block w-100 mockup-image" alt="Diseño Estratégico" />
+                      <div className="carousel-caption d-none d-md-block">
+                        <button className="mockup-btn">DISEÑO ESTRATÉGICO ↗</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button className="carousel-control-prev" type="button" data-bs-target="#mockupCarousel" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
+                  </button>
+                  <button className="carousel-control-next" type="button" data-bs-target="#mockupCarousel" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <Link
-            href="/services"
-            className="inline-block mt-12 px-6 py-3 border border-gray-500 text-white rounded-lg hover:bg-gray-700 transition flex items-center gap-2"
-          >
-            View All Services
-            <ArrowRight size={18} />
-          </Link>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h3 className="text-4xl font-bold">Ready to Start Your Project?</h3>
-          <p className="text-xl text-blue-100">
-            Get in touch with our team to discuss how we can help bring your vision to reality.
-          </p>
-          <Link
-            href="/login"
-            className="inline-block px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition"
-          >
-            Send Your Brief
-          </Link>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-black border-t border-gray-800 py-8 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <p className="text-gray-400">© 2024 CTRL Studio. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="text-gray-400 hover:text-white transition">
-              Twitter
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition">
-              LinkedIn
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition">
-              Instagram
-            </a>
+      {/* SERVICIOS STRIP */}
+      <section className="services-strip">
+        <div className="container">
+          <p className="section-label">Qué hacemos</p>
+          <div className="service-item">
+            <span className="service-name">Identidad &amp; Branding</span>
+            <span className="service-tag">DISEÑO</span>
+          </div>
+          <div className="service-item">
+            <span className="service-name">Plantillas Gráficas</span>
+            <span className="service-tag">DESCARGA</span>
+          </div>
+          <div className="service-item">
+            <span className="service-name">Planes Mensuales</span>
+            <span className="service-tag">SUSCRIPCIÓN</span>
+          </div>
+          <div className="service-item">
+            <span className="service-name">Consultoría Visual</span>
+            <span className="service-tag">ESTRATEGIA</span>
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      {/* CARRUSEL DE TRABAJOS */}
+      <section className="works-section">
+        <div className="container mb-4">
+          <p className="section-label">Trabajos recientes</p>
+        </div>
+        <div className="carousel-track" id="carousel-root"></div>
+      </section>
+
+      {/* ABOUT PREVIEW */}
+      <section className="about-section">
+        <div className="container">
+          <div className="row gy-5 align-items-center">
+            <div className="col-lg-7">
+              <p className="section-label">Quiénes somos</p>
+              <h2 className="about-title">
+                Somos <em>más</em><br />que un estudio.
+              </h2>
+              <div className="row stats-row gy-4 mt-2">
+                <div className="col-4">
+                  <div className="stat-item">
+                    <div className="stat-number">80+</div>
+                    <div className="stat-label">PROYECTOS</div>
+                  </div>
+                </div>
+                <div className="col-4">
+                  <div className="stat-item">
+                    <div className="stat-number">3</div>
+                    <div className="stat-label">AÑOS</div>
+                  </div>
+                </div>
+                <div className="col-4">
+                  <div className="stat-item">
+                    <div className="stat-number">100%</div>
+                    <div className="stat-label">DEDICACIÓN</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-5">
+              <div className="frost-card p-4 p-lg-5">
+                <p className="about-intro-text">
+                  CTRL Studio nace de la mente de una chalada de 20 años que se ha puesto como propósito hacer que la vida sea más cuqui
+                </p>
+                <a href="/empresa" className="btn-ctrl btn-ctrl-outline mt-4 d-inline-flex">Conoce nuestra historia →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <mi-pie></mi-pie>
+
+      <script src="/js/mis-etiquetas.js"></script>
+      <script src="/js/fondo.js"></script>
+      <script src="/js/proyectos.js"></script>
+    </>
   )
 }

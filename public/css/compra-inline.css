@@ -1,0 +1,17 @@
+.compra-hero { padding: 8rem 0 3rem; }
+.compra-hero-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; }
+.compra-card { border-radius: var(--radius); border: 1px solid var(--gris-mid); background: white; padding: 2rem; margin-bottom: 1.5rem; }
+.compra-card-title { font-size: 0.7rem; letter-spacing: 0.15em; font-weight: 700; text-transform: uppercase; color: var(--txt-muted); margin-bottom: 1.5rem; }
+.pago-metodos { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.pago-opcion { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer; }
+.compra-resumen { border-radius: var(--radius); border: 1px solid var(--gris-mid); background: white; padding: 2rem; position: sticky; top: 7rem; }
+.resumen-titulo { font-size: 0.7rem; letter-spacing: 0.15em; font-weight: 700; text-transform: uppercase; color: var(--txt-muted); margin-bottom: 1.5rem; }
+.resumen-item { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.75rem; }
+.resumen-divider { height: 1px; background: var(--gris-mid); margin: 1rem 0; }
+.resumen-row { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.4rem; }
+.resumen-total { font-size: 1.2rem; font-weight: 700; }
+.confirmacion-card { text-align: center; padding: 3rem 2rem; }
+.confirmacion-icon { font-size: 3rem; color: var(--rojo); margin-bottom: 1rem; }
+.confirmacion-titulo { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.confirmacion-ref { font-size: 0.9rem; color: var(--txt-muted); margin-bottom: 1rem; }
+.confirmacion-texto { font-size: 0.88rem; color: var(--txt-muted); max-width: 30ch; margin: 0 auto; }
