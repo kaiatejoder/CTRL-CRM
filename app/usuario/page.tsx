@@ -137,7 +137,9 @@ export default function UsuarioPage() {
           document.getElementById('login-section')!.style.display = 'block'
           document.getElementById('perfil-section')!.style.display = 'none'
         }
-        if (window.location.hash === '#registro') ;(window as any).switchTab('registro', null)
+        if (window.location.hash === '#registro') {
+          (window as any).switchTab('registro', null)
+        }
       })
     }
   }, [])
