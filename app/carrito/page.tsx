@@ -2,16 +2,17 @@
 
 import { useEffect } from 'react'
 
+declare global {
+  var getCart: () => any[]
+  var updateQty: (nombre: string, delta: number) => void
+  var removeFromCart: (nombre: string) => void
+  var showToast: (msg: string) => void
+}
+
 export default function CarritoPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // Import cart functions from global scope
-      declare global {
-        var getCart: () => any[]
-        var updateQty: (nombre: string, delta: number) => void
-        var removeFromCart: (nombre: string) => void
-        var showToast: (msg: string) => void
-      }
 
       const renderCarrito = () => {
         const cart = (window as any).getCart?.() || []
