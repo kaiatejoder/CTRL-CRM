@@ -65,4 +65,18 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove("show"), 2500);
 }
 
+/**
+ * Redirect to checkout with product details
+ * Used for plan/subscription purchases that require brief form
+ */
+function goToCheckout(btn, nombre, precio, categoria) {
+    const checkoutUrl = `/checkout?${new URLSearchParams({
+        product: nombre,
+        price: precio,
+        category: categoria,
+    }).toString()}`;
+
+    window.location.href = checkoutUrl;
+}
+
 document.addEventListener("DOMContentLoaded", updateCartCount);

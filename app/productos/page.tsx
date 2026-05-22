@@ -68,7 +68,7 @@ export default function ProductosPage() {
                 </ul>
                 <button
                   className="btn-add w-100"
-                  onClick={(e: any) => (window as any).addToCart?.(e.target, 'Plan Starter — Mensual', 199, 'plan')}
+                  onClick={(e: any) => (window as any).goToCheckout?.(e.target, 'Plan Starter — Mensual', 199, 'plan')}
                 >
                   EMPEZAR ↗
                 </button>
@@ -88,7 +88,7 @@ export default function ProductosPage() {
                 </ul>
                 <button
                   className="btn-add w-100"
-                  onClick={(e: any) => (window as any).addToCart?.(e.target, 'Plan Pro — Mensual', 449, 'plan')}
+                  onClick={(e: any) => (window as any).goToCheckout?.(e.target, 'Plan Pro — Mensual', 449, 'plan')}
                 >
                   EMPEZAR ↗
                 </button>
@@ -109,7 +109,7 @@ export default function ProductosPage() {
                 </ul>
                 <button
                   className="btn-add w-100"
-                  onClick={(e: any) => (window as any).addToCart?.(e.target, 'Plan Studio — Mensual', 899, 'plan')}
+                  onClick={(e: any) => (window as any).goToCheckout?.(e.target, 'Plan Studio — Mensual', 899, 'plan')}
                 >
                   EMPEZAR ↗
                 </button>

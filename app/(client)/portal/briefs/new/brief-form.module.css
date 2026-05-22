@@ -1,0 +1,714 @@
+/* ─────────────────────────────────────────────────────────────
+   BRIEF FORM - SWISS GRID + HELVETICA NOW + BITMAP DETAILS
+   ───────────────────────────────────────────────────────────── */
+
+/* @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap'); */
+
+:root {
+  /* Swiss Grid Colors */
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray-900: #1a1a1a;
+  --gray-800: #2d2d2d;
+  --gray-700: #3f3f3f;
+  --gray-600: #555555;
+  --gray-500: #777777;
+  --gray-400: #999999;
+  --gray-300: #cccccc;
+  --gray-200: #e5e5e5;
+  --gray-100: #f5f5f5;
+
+  /* Accent: Swiss Blue */
+  --accent: #0052cc;
+  --accent-light: #e6f0ff;
+  --accent-dark: #003d99;
+
+  /* Status Colors */
+  --success: #00a854;
+  --warning: #ff7a00;
+  --error: #d32f2f;
+
+  /* Swiss Grid Spacing (8px base) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+
+  /* Grid Line */
+  --grid-line: 1px solid var(--gray-300);
+  --grid-line-dark: 1px solid var(--gray-700);
+
+  /* Bitmap Border - Creates pixel-perfect aesthetic */
+  --bitmap-border: 2px solid var(--black);
+  --bitmap-border-light: 1px solid var(--gray-400);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  background: var(--white);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--black);
+  line-height: 1.6;
+
+  /* Bitmap grid background overlay - subtle 4px grid */
+  background-image:
+    linear-gradient(0deg, transparent 23px, var(--gray-100) 23px, var(--gray-100) 24px),
+    linear-gradient(90deg, transparent 23px, var(--gray-100) 23px, var(--gray-100) 24px);
+  background-size: 24px 24px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HEADER - SWISS BOLD TYPOGRAPHY
+   ───────────────────────────────────────────────────────────── */
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: var(--bitmap-border);
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: var(--accent-light);
+  border: var(--bitmap-border-light);
+  border-radius: 2px;
+  color: var(--accent-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin: 0;
+
+  /* Bitmap effect: hard shadow */
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--gray-600);
+  margin: var(--space-2) 0 0 0;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PURCHASE CARD - SWISS GRID LAYOUT
+   ───────────────────────────────────────────────────────────── */
+
+.purchaseCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  background: var(--gray-100);
+  border: var(--bitmap-border);
+  border-left: 4px solid var(--accent);
+}
+
+.purchaseInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.purchaseLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+.purchaseDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.detailRow {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 14px;
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: var(--gray-600);
+  min-width: 80px;
+}
+
+.detailValue {
+  color: var(--black);
+  font-weight: 500;
+}
+
+.purchaseAmount {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: right;
+  padding-left: var(--space-4);
+  border-left: var(--grid-line);
+}
+
+.amountLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+.amountValue {
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FORM STRUCTURE - SWISS GRID SECTIONS
+   ───────────────────────────────────────────────────────────── */
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: var(--grid-line);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-family: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--black);
+
+  /* Section numbering */
+}
+
+.sectionDescription {
+  font-size: 14px;
+  color: var(--gray-600);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FORM GROUPS - INPUTS & LAYOUT
+   ───────────────────────────────────────────────────────────── */
+
+.formGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-3);
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: 0.005em;
+}
+
+.required {
+  color: var(--error);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INPUT FIELDS - BITMAP BORDERS, SWISS PRECISION
+   ───────────────────────────────────────────────────────────── */
+
+.input,
+.textarea,
+.select {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  padding: var(--space-2) var(--space-2);
+  border: var(--bitmap-border-light);
+  background: var(--white);
+  color: var(--black);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 0px var(--white),
+    0 0 0 3px var(--accent-light),
+    inset 0 0 0 1px var(--accent);
+}
+
+.input::placeholder,
+.textarea::placeholder,
+.select::placeholder {
+  color: var(--gray-400);
+}
+
+.input {
+  height: 44px;
+  min-height: 44px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230a0a0a' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-2) center;
+  padding-right: var(--space-4);
+}
+
+.inputError {
+  border-color: var(--error) !important;
+  background-color: rgba(211, 47, 47, 0.02);
+}
+
+.errorText {
+  display: block;
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(211, 47, 47, 0.05);
+  border: 1px solid var(--error);
+  border-left: 4px solid var(--error);
+  margin-bottom: var(--space-4);
+  color: var(--error);
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FILE UPLOAD - BITMAP DROP ZONE
+   ───────────────────────────────────────────────────────────── */
+
+.fileUpload {
+  position: relative;
+}
+
+.fileInput {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.fileUploadContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: 2px dashed var(--gray-400);
+  background: var(--gray-100);
+  text-align: center;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.fileUpload:hover .fileUploadContent {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.fileUploadIcon {
+  font-size: 32px;
+}
+
+.fileUploadText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fileUploadMain {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0;
+}
+
+.fileUploadSub {
+  font-size: 12px;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SUBMIT SECTION - CALL TO ACTION
+   ───────────────────────────────────────────────────────────── */
+
+.submitSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: var(--bitmap-border);
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 56px;
+  padding: 0 var(--space-4);
+  background: var(--black);
+  color: var(--white);
+  border: var(--bitmap-border);
+  border-color: var(--black);
+  font-family: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* Bitmap hard shadow on hover */
+  box-shadow: 0 0 0 0px rgba(10, 10, 10, 0.1);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--gray-900);
+  transform: translate(2px, 2px);
+  box-shadow: -2px -2px 0px rgba(10, 10, 10, 0.2);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: -4px -4px 0px rgba(10, 10, 10, 0.15);
+}
+
+.submitButtonLoading {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submitButtonText {
+  flex: 1;
+  text-align: center;
+}
+
+.submitButtonArrow {
+  transition: transform 0.2s ease;
+}
+
+.submitButton:hover .submitButtonArrow {
+  transform: translateX(4px);
+}
+
+.submitHelp {
+  font-size: 13px;
+  color: var(--gray-600);
+  margin: 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER - SWISS GRID FOOTER
+   ───────────────────────────────────────────────────────────── */
+
+.footer {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: var(--bitmap-border);
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+.footerContent p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footerLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SUCCESS STATE - CELEBRATION
+   ───────────────────────────────────────────────────────────── */
+
+.successContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  padding: var(--space-6);
+  background: var(--white);
+  background-image:
+    linear-gradient(0deg, transparent 23px, var(--gray-100) 23px, var(--gray-100) 24px),
+    linear-gradient(90deg, transparent 23px, var(--gray-100) 23px, var(--gray-100) 24px);
+  background-size: 24px 24px;
+}
+
+.successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  padding: var(--space-6);
+  background: var(--white);
+  border: var(--bitmap-border);
+  max-width: 400px;
+}
+
+.successIcon {
+  color: var(--success);
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.successTitle {
+  font-family: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+
+.successText {
+  font-size: 16px;
+  color: var(--gray-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.loadingDots {
+  display: flex;
+  gap: 8px;
+  margin-top: var(--space-2);
+  justify-content: center;
+}
+
+.loadingDots span {
+  width: 8px;
+  height: 8px;
+  background: var(--gray-400);
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+
+.loadingDots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loadingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loadingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────────────────────────── */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE - SWISS GRID AT ALL SCALES
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--space-4);
+  }
+
+  .title {
+    font-size: clamp(24px, 5vw, 40px);
+  }
+
+  .purchaseCard {
+    grid-template-columns: 1fr;
+  }
+
+  .purchaseAmount {
+    border-left: none;
+    border-top: var(--grid-line);
+    padding-left: 0;
+    padding-top: var(--space-3);
+  }
+
+  .breadcrumb {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .submitButton {
+    height: 48px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: var(--space-3);
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .submitButton {
+    height: 44px;
+    gap: var(--space-1);
+    padding: 0 var(--space-3);
+  }
+
+  .submitButtonArrow {
+    display: none;
+  }
+
+  .footerContent {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: none;
+  }
+
+  .submitSection,
+  .footer {
+    display: none;
+  }
+}
