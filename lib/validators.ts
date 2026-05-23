@@ -15,7 +15,7 @@ export const signupSchema = z.object({
 export const briefSchema = z.object({
   title: z.string().min(5),
   description: z.string().optional(),
-  type: z.enum(['branding', 'web_design', 'consulting']),
+  type: z.enum(['branding', 'web_design', 'consulting', 'client-submitted']),
   dueDate: z.string().datetime().optional(),
 })
 

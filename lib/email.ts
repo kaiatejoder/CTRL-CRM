@@ -1,6 +1,15 @@
 import nodemailer from 'nodemailer'
 import { prisma } from './db'
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: parseInt(process.env.EMAIL_PORT || '587'),
@@ -17,15 +26,18 @@ export async function sendBriefEmail(
   clientName: string,
   briefTitle: string
 ) {
-  const briefUrl = `${process.env.API_URL}/briefs/${briefId}`
+  const appUrl = process.env.NEXTAUTH_URL || process.env.API_URL || ''
+  const briefUrl = `${appUrl}/portal/briefs/${briefId}`
+  const safeName = escapeHtml(clientName)
+  const safeTitle = escapeHtml(briefTitle)
 
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to,
-    subject: `New Brief: ${briefTitle} - CTRL Studio`,
+    subject: `New Brief: ${safeTitle} - CTRL Studio`,
     html: `
-      <h2>Hello ${clientName},</h2>
-      <p>We have a new brief for you: <strong>${briefTitle}</strong></p>
+      <h2>Hello ${safeName},</h2>
+      <p>We have a new brief for you: <strong>${safeTitle}</strong></p>
       <p>Please click the link below to view and respond:</p>
       <a href="${briefUrl}" style="display: inline-block; padding: 10px 20px; background: #000; color: #fff; text-decoration: none; border-radius: 4px;">
         View Brief

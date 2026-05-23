@@ -1,9 +1,9 @@
-import NextAuth from 'next-auth'
+import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { compare } from 'bcryptjs'
 import { prisma } from './db'
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -33,14 +33,14 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    jwt({ token, user }: any) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-        token.role = user.role
+        token.role = (user as { role: string }).role
       }
       return token
     },
-    session({ session, token }: any) {
+    async session({ session, token }) {
       session.user.id = token.id as string
       session.user.role = token.role as string
       return session
@@ -49,7 +49,5 @@ export const authOptions = {
   pages: {
     signIn: '/login',
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
 }
-
-export default NextAuth(authOptions)

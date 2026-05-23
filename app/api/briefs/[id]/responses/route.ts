@@ -10,29 +10,17 @@ export async function POST(
   const session = await getServerSession(authOptions)
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { id } = await params
-  const briefId = id
+  const { id: briefId } = await params
   const { data } = await req.json()
 
-  const brief = await prisma.brief.findUnique({
-    where: { id: briefId },
-  })
+  const brief = await prisma.brief.findUnique({ where: { id: briefId } })
 
-  if (!brief) {
-    return NextResponse.json({ error: 'Brief not found' }, { status: 404 })
-  }
-
-  if (brief.clientId !== session.user.id) {
-    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-  }
+  if (!brief) return NextResponse.json({ error: 'Brief not found' }, { status: 404 })
+  if (brief.clientId !== session.user.id) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
   try {
     const response = await prisma.briefResponse.create({
-      data: {
-        briefId,
-        data,
-        submittedAt: new Date(),
-      },
+      data: { briefId, data, submittedAt: new Date() },
     })
 
     await prisma.brief.update({
@@ -41,7 +29,7 @@ export async function POST(
     })
 
     return NextResponse.json(response)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to submit response' }, { status: 500 })
   }
 }

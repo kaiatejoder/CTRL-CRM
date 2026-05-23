@@ -9,19 +9,23 @@ export async function GET(req: NextRequest) {
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const searchParams = new URL(req.url).searchParams
-  const limit = parseInt(searchParams.get('limit') || '50')
+  const rawLimit = parseInt(searchParams.get('limit') || '50')
+  const limit = Number.isNaN(rawLimit) ? 50 : Math.min(Math.max(rawLimit, 1), 100)
   const isAdmin = session.user.role === 'admin'
 
   const where = isAdmin ? {} : { clientId: session.user.id }
 
-  const briefs = await prisma.brief.findMany({
-    where,
-    include: { project: true, responses: true },
-    orderBy: { createdAt: 'desc' },
-    take: limit,
-  })
-
-  return NextResponse.json(briefs)
+  try {
+    const briefs = await prisma.brief.findMany({
+      where,
+      include: { project: true, responses: true },
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+    })
+    return NextResponse.json(briefs)
+  } catch {
+    return NextResponse.json({ error: 'Failed to fetch briefs' }, { status: 500 })
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -33,7 +37,6 @@ export async function POST(req: NextRequest) {
   try {
     const contentType = req.headers.get('content-type') || ''
 
-    // Handle FormData from client form submission
     if (contentType.includes('multipart/form-data')) {
       const formData = await req.formData()
 
@@ -48,13 +51,9 @@ export async function POST(req: NextRequest) {
       const orderId = formData.get('orderId') as string
 
       if (!briefTitle || !projectDescription || !brandName) {
-        return NextResponse.json(
-          { error: 'Missing required fields' },
-          { status: 400 }
-        )
+        return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
       }
 
-      // Create brief from client form
       const brief = await prisma.brief.create({
         data: {
           title: briefTitle,
@@ -65,7 +64,6 @@ export async function POST(req: NextRequest) {
         },
       })
 
-      // Store form response data
       const responseData = {
         brandName,
         targetAudience,
@@ -78,16 +76,12 @@ export async function POST(req: NextRequest) {
       }
 
       await prisma.briefResponse.create({
-        data: {
-          briefId: brief.id,
-          data: responseData,
-        },
+        data: { briefId: brief.id, data: responseData },
       })
 
       return NextResponse.json(brief, { status: 201 })
     }
 
-    // Handle JSON from admin API
     if (session.user.role !== 'admin') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
