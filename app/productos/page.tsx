@@ -1,11 +1,14 @@
 'use client'
 
-import { useEffect } from 'react'
+import ProductGrid from "../../lib/components/ProductGrid";
 
 export default function ProductosPage() {
-  useEffect(() => {
-    // Bootstrap loaded globally in layout
-  }, [])
+  return (
+    <main className="container">
+      <ProductGrid />
+    </main>
+  );
+}
 
   return (
     <>
