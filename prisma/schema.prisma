@@ -4,6 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -37,6 +38,9 @@ model Brief {
   projectId   String?
   project     Project?  @relation(fields: [projectId], references: [id])
   responses   BriefResponse[]
+
+  @@index([clientId])
+  @@index([projectId])
 }
 
 model BriefResponse {
@@ -45,6 +49,8 @@ model BriefResponse {
   brief     Brief     @relation(fields: [briefId], references: [id], onDelete: Cascade)
   data      Json
   submittedAt DateTime @default(now())
+
+  @@index([briefId])
 }
 
 model Project {
@@ -59,6 +65,8 @@ model Project {
   updatedAt   DateTime  @updatedAt
 
   briefs      Brief[]
+
+  @@index([clientId])
 }
 
 model Notification {

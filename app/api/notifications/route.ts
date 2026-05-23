@@ -7,13 +7,16 @@ export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions)
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const notifications = await prisma.notification.findMany({
-    where: { userId: session.user.id },
-    orderBy: { createdAt: 'desc' },
-    take: 50,
-  })
-
-  return NextResponse.json(notifications)
+  try {
+    const notifications = await prisma.notification.findMany({
+      where: { userId: session.user.id },
+      orderBy: { createdAt: 'desc' },
+      take: 50,
+    })
+    return NextResponse.json(notifications)
+  } catch {
+    return NextResponse.json({ error: 'Failed to fetch notifications' }, { status: 500 })
+  }
 }
 
 export async function PATCH(req: NextRequest) {
@@ -22,10 +25,13 @@ export async function PATCH(req: NextRequest) {
 
   const { notificationId } = await req.json()
 
-  const notification = await prisma.notification.update({
-    where: { id: notificationId },
-    data: { read: true },
-  })
-
-  return NextResponse.json(notification)
+  try {
+    const notification = await prisma.notification.update({
+      where: { id: notificationId, userId: session.user.id },
+      data: { read: true },
+    })
+    return NextResponse.json(notification)
+  } catch {
+    return NextResponse.json({ error: 'Notification not found' }, { status: 404 })
+  }
 }
