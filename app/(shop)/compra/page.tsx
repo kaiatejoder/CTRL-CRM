@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Script from 'next/script'
 
 export default function CompraPage() {
   useEffect(() => {
@@ -229,9 +230,9 @@ export default function CompraPage() {
       <div className="ctrl-toast" id="toast"></div>
       <mi-pie></mi-pie>
 
-      <script src="/js/mis-etiquetas.js"></script>
-      <script src="/js/fondo.js"></script>
-      <script src="/js/carrito.js"></script>
+      <Script src="/js/mis-etiquetas.js" strategy="afterInteractive" />
+      <Script src="/js/fondo.js" strategy="afterInteractive" />
+      <Script src="/js/carrito.js" strategy="afterInteractive" />
 
       <style jsx>{`
         .compra-hero { padding: 8rem 0 3rem; }

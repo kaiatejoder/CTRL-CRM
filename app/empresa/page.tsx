@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Script from 'next/script'
 
 export default function EmpresaPage() {
   useEffect(() => {
@@ -125,9 +126,9 @@ export default function EmpresaPage() {
       <div className="ctrl-toast" id="toast"></div>
       <mi-pie></mi-pie>
 
-      <script src="/js/mis-etiquetas.js"></script>
-      <script src="/js/fondo.js"></script>
-      <script src="/js/proyectos.js"></script>
+      <Script src="/js/mis-etiquetas.js" strategy="afterInteractive" />
+      <Script src="/js/fondo.js" strategy="afterInteractive" />
+      <Script src="/js/proyectos.js" strategy="afterInteractive" />
     </>
   )
 }

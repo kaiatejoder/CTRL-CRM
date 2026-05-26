@@ -1,13 +1,9 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 
-/**
- * Simple checkout page that simulates payment and redirects to brief form
- * In production, replace with Stripe/PayPal integration
- */
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [processing, setProcessing] = useState(false)
@@ -21,19 +17,11 @@ export default function CheckoutPage() {
     setProcessing(true)
 
     try {
-      // Simulate payment processing delay
       await new Promise(resolve => setTimeout(resolve, 2000))
 
-      // In production, you would:
-      // 1. Call Stripe/PayPal API
-      // 2. Create order in database
-      // 3. Get real orderId from response
-
-      // For now, generate a test orderId
       const orderId = `order_${Date.now()}`
       const productId = `prod_${categoria}_${Date.now()}`
 
-      // Build brief form URL with purchase data
       const briefUrl = `/portal/briefs/new?${new URLSearchParams({
         orderId,
         product: producto,
@@ -42,7 +30,6 @@ export default function CheckoutPage() {
         category: categoria,
       }).toString()}`
 
-      // Redirect to brief form
       router.push(briefUrl)
     } catch (err) {
       setError('Payment failed. Please try again.')
@@ -103,5 +90,13 @@ export default function CheckoutPage() {
         ℹ️ This is a test checkout. In production, integrate with Stripe, PayPal, or your payment provider.
       </p>
     </div>
+  )
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center' }}>Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   )
 }

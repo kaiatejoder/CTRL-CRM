@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import styles from './brief-form.module.css'
 
@@ -25,7 +25,7 @@ interface FormData {
   attachments: File[]
 }
 
-export default function NewBriefPage() {
+function NewBriefContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [purchase, setPurchase] = useState<PurchaseData | null>(null)
@@ -445,5 +445,13 @@ export default function NewBriefPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function NewBriefPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center' }}>Loading...</div>}>
+      <NewBriefContent />
+    </Suspense>
   )
 }

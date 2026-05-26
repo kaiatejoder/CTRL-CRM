@@ -49,9 +49,6 @@
    BASE STYLES
    ───────────────────────────────────────────────────────────── */
 
-* {
-  box-sizing: border-box;
-}
 
 .container {
   max-width: 900px;
