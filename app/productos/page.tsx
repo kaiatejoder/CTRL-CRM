@@ -1,16 +1,8 @@
 'use client'
 
-import ProductGrid from "../../lib/components/ProductGrid";
 import Script from 'next/script'
 
 export default function ProductosPage() {
-  return (
-    <main className="container">
-      <ProductGrid />
-    </main>
-  );
-}
-
   return (
     <>
       <div className="bg-dots"></div>
