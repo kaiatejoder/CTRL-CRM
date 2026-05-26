@@ -1,6 +1,7 @@
 'use client'
 
 import ProductGrid from "../../lib/components/ProductGrid";
+import Script from 'next/script'
 
 export default function ProductosPage() {
   return (
@@ -126,14 +127,14 @@ export default function ProductosPage() {
       <div className="ctrl-toast" id="toast">✓ Añadido al carrito</div>
 
       <mi-pie></mi-pie>
-      <script src="/js/mis-etiquetas.js"></script>
-      <script src="/js/fondo.js"></script>
-      <script type="module" src="/js/carrito.js"></script>
-      <script type="module" src="/js/productos.js"></script>
-      <script type="module" dangerouslySetInnerHTML={{__html: `
+      <Script src="/js/mis-etiquetas.js" strategy="afterInteractive" />
+      <Script src="/js/fondo.js" strategy="afterInteractive" />
+      <Script src="/js/carrito.js" strategy="afterInteractive" />
+      <Script src="/js/productos.js" strategy="afterInteractive" />
+      <Script strategy="afterInteractive" dangerouslySetInnerHTML={{__html: `
         import { applyTranslations } from '/js/i18n.js';
         document.addEventListener('DOMContentLoaded', applyTranslations);
-      `}}></script>
+      `}} />
     </>
   )
 }
