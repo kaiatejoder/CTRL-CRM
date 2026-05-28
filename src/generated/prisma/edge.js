@@ -200,7 +200,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\ctero\\OneDrive\\Documentos\\ONEDRIVE GD\\OneDrive\\Downloads\\DAW\\WEB\\CTRLCRM\\src\\generated\\prisma",
+      "value": "C:\\Users\\ctero\\OneDrive\\Documentos\\ONEDRIVE GD\\OneDrive\\Downloads\\DAW\\WEB\\CTRLCRM\\.claude\\worktrees\\eager-bassi-67f4c0\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -214,12 +214,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\ctero\\OneDrive\\Documentos\\ONEDRIVE GD\\OneDrive\\Downloads\\DAW\\WEB\\CTRLCRM\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\ctero\\OneDrive\\Documentos\\ONEDRIVE GD\\OneDrive\\Downloads\\DAW\\WEB\\CTRLCRM\\.claude\\worktrees\\eager-bassi-67f4c0\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.19.3",
