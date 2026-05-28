@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import styles from './brief-form.module.css'
 
 interface PurchaseData {
@@ -28,46 +29,36 @@ interface FormData {
 function NewBriefContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [purchase, setPurchase] = useState<PurchaseData | null>(null)
-  const [formData, setFormData] = useState<FormData>({
-    briefTitle: '',
-    projectDescription: '',
-    brandName: '',
-    targetAudience: '',
-    designPreferences: '',
-    timeline: 'standard',
-    budget: '',
-    additionalNotes: '',
-    attachments: [],
+  const [purchase] = useState<PurchaseData | null>(() => {
+    const orderId = searchParams.get('orderId')
+    const productName = searchParams.get('product')
+    if (!orderId || !productName) return null
+    return {
+      orderId,
+      productName,
+      category: searchParams.get('category') || 'design-service',
+      price: parseFloat(searchParams.get('price') || '0'),
+      purchaseDate: new Date().toISOString(),
+      productId: searchParams.get('productId') || '',
+    }
+  })
+  const [formData, setFormData] = useState<FormData>(() => {
+    const productName = searchParams.get('product')
+    return {
+      briefTitle: productName ? `${productName} — Design Brief` : '',
+      projectDescription: '',
+      brandName: '',
+      targetAudience: '',
+      designPreferences: '',
+      timeline: 'standard',
+      budget: '',
+      additionalNotes: '',
+      attachments: [],
+    }
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isLoading, setIsLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-
-  useEffect(() => {
-    // Get purchase data from URL params (passed from checkout/shop)
-    const orderId = searchParams.get('orderId')
-    const productName = searchParams.get('product')
-    const category = searchParams.get('category')
-    const price = searchParams.get('price')
-
-    if (orderId && productName) {
-      setPurchase({
-        orderId,
-        productName,
-        category: category || 'design-service',
-        price: parseFloat(price || '0'),
-        purchaseDate: new Date().toISOString(),
-        productId: searchParams.get('productId') || '',
-      })
-
-      // Auto-populate brief title from product
-      setFormData((prev) => ({
-        ...prev,
-        briefTitle: `${productName} — Design Brief`,
-      }))
-    }
-  }, [searchParams])
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -156,7 +147,7 @@ function NewBriefContent() {
       setTimeout(() => {
         router.push(`/portal/briefs/${result.id}`)
       }, 2000)
-    } catch (error) {
+    } catch {
       setErrors({ submit: 'Failed to submit brief. Please try again.' })
     } finally {
       setIsLoading(false)
@@ -295,7 +286,7 @@ function NewBriefContent() {
         {/* Section 2: Target & Preferences */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>02. Audience & Design Direction</h2>
-          <p className={styles.sectionDescription}>Who are we designing for and what's your vision</p>
+          <p className={styles.sectionDescription}>Who are we designing for and what&apos;s your vision</p>
 
           <div className={styles.formGroup}>
             <label htmlFor="targetAudience" className={styles.label}>
@@ -335,7 +326,7 @@ function NewBriefContent() {
         {/* Section 3: Project Details */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>03. Project Timeline & Budget</h2>
-          <p className={styles.sectionDescription}>When do you need this and what's your budget range</p>
+          <p className={styles.sectionDescription}>When do you need this and what&apos;s your budget range</p>
 
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
@@ -440,8 +431,8 @@ function NewBriefContent() {
       {/* Footer Grid */}
       <div className={styles.footer}>
         <div className={styles.footerContent}>
-          <p>Need help? <a href="/contacto" className={styles.footerLink}>Contact our team</a></p>
-          <p>View your <a href="/portal/briefs" className={styles.footerLink}>submitted briefs</a></p>
+          <p>Need help? <Link href="/contacto" className={styles.footerLink}>Contact our team</Link></p>
+          <p>View your <Link href="/portal/briefs" className={styles.footerLink}>submitted briefs</Link></p>
         </div>
       </div>
     </div>

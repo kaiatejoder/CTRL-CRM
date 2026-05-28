@@ -21,6 +21,33 @@ interface RecentBrief {
   createdAt: string
 }
 
+function StatCard({
+  icon,
+  label,
+  value,
+  href,
+}: {
+  icon: React.ReactNode
+  label: string
+  value: number
+  href: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition"
+    >
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-gray-600 text-sm font-medium">{label}</p>
+          <p className="text-3xl font-bold text-gray-900 mt-2">{value}</p>
+        </div>
+        <div className="text-blue-600 opacity-60">{icon}</div>
+      </div>
+    </Link>
+  )
+}
+
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({
     totalClients: 0,
@@ -57,31 +84,6 @@ export default function AdminDashboard() {
 
     fetchDashboardData()
   }, [])
-
-  const StatCard = ({
-    icon: Icon,
-    label,
-    value,
-    href,
-  }: {
-    icon: React.ReactNode
-    label: string
-    value: number
-    href: string
-  }) => (
-    <Link
-      href={href}
-      className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition"
-    >
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-gray-600 text-sm font-medium">{label}</p>
-          <p className="text-3xl font-bold text-gray-900 mt-2">{value}</p>
-        </div>
-        <div className="text-blue-600 opacity-60">{Icon}</div>
-      </div>
-    </Link>
-  )
 
   return (
     <div className="space-y-8">

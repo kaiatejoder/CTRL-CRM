@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Search, Plus, Eye, Send } from 'lucide-react'
 
@@ -27,59 +27,54 @@ interface Client {
 
 export default function BriefsPage() {
   const [briefs, setBriefs] = useState<Brief[]>([])
-  const [filteredBriefs, setFilteredBriefs] = useState<Brief[]>([])
   const [clients, setClients] = useState<Record<string, Client>>({})
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('all')
-  const [showNewForm, setShowNewForm] = useState(false)
+  const [reloadKey, setReloadKey] = useState(0)
 
-  useEffect(() => {
-    fetchBriefs()
-  }, [])
-
-  useEffect(() => {
+  const filteredBriefs = useMemo(() => {
     let filtered = briefs
-
     if (searchTerm) {
       filtered = filtered.filter((b) =>
         b.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
-
     if (statusFilter !== 'all') {
       filtered = filtered.filter((b) => b.status === statusFilter)
     }
-
-    setFilteredBriefs(filtered)
+    return filtered
   }, [searchTerm, statusFilter, briefs])
 
-  const fetchBriefs = async () => {
-    try {
-      const [briefsRes, clientsRes] = await Promise.all([
-        fetch('/api/admin/briefs'),
-        fetch('/api/admin/clients'),
-      ])
+  useEffect(() => {
+    async function fetchBriefs() {
+      try {
+        const [briefsRes, clientsRes] = await Promise.all([
+          fetch('/api/admin/briefs'),
+          fetch('/api/admin/clients'),
+        ])
 
-      if (briefsRes.ok) {
-        const briefsData = await briefsRes.json()
-        setBriefs(briefsData)
-      }
+        if (briefsRes.ok) {
+          const briefsData = await briefsRes.json()
+          setBriefs(briefsData)
+        }
 
-      if (clientsRes.ok) {
-        const clientsData = await clientsRes.json()
-        const clientsMap = clientsData.reduce((acc: Record<string, Client>, c: Client) => {
-          acc[c.id] = c
-          return acc
-        }, {})
-        setClients(clientsMap)
+        if (clientsRes.ok) {
+          const clientsData = await clientsRes.json()
+          const clientsMap = clientsData.reduce((acc: Record<string, Client>, c: Client) => {
+            acc[c.id] = c
+            return acc
+          }, {})
+          setClients(clientsMap)
+        }
+      } catch (err) {
+        console.error('Failed to fetch briefs:', err)
+      } finally {
+        setLoading(false)
       }
-    } catch (err) {
-      console.error('Failed to fetch briefs:', err)
-    } finally {
-      setLoading(false)
     }
-  }
+    fetchBriefs()
+  }, [reloadKey])
 
   const sendBrief = async (briefId: string, clientId: string) => {
     try {
@@ -90,7 +85,7 @@ export default function BriefsPage() {
       })
 
       if (res.ok) {
-        fetchBriefs()
+        setReloadKey((k) => k + 1)
       }
     } catch (err) {
       console.error('Failed to send brief:', err)

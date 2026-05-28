@@ -123,7 +123,7 @@ export default function ProductosPage() {
       <Script src="/js/fondo.js" strategy="afterInteractive" />
       <Script src="/js/carrito.js" strategy="afterInteractive" />
       <Script src="/js/productos.js" strategy="afterInteractive" />
-      <Script strategy="afterInteractive" dangerouslySetInnerHTML={{__html: `
+      <Script id="apply-translations" strategy="afterInteractive" dangerouslySetInnerHTML={{__html: `
         import { applyTranslations } from '/js/i18n.js';
         document.addEventListener('DOMContentLoaded', applyTranslations);
       `}} />

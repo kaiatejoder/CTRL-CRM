@@ -19,7 +19,7 @@ export default function SignupPage() {
 
     try {
       signupSchema.parse(formData)
-    } catch (err) {
+    } catch {
       setError('Please check your input')
       return
     }

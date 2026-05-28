@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Search, Plus, Edit, Mail } from 'lucide-react'
 
@@ -17,7 +17,6 @@ interface Client {
 
 export default function ClientsPage() {
   const [clients, setClients] = useState<Client[]>([])
-  const [filteredClients, setFilteredClients] = useState<Client[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [showNewClientForm, setShowNewClientForm] = useState(false)
@@ -27,39 +26,34 @@ export default function ClientsPage() {
     company: '',
     phone: '',
   })
+  const [reloadKey, setReloadKey] = useState(0)
 
-  useEffect(() => {
-    fetchClients()
-  }, [])
-
-  useEffect(() => {
-    let filtered = clients
-
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (c) =>
-          c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          c.company?.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-
-    setFilteredClients(filtered)
+  const filteredClients = useMemo(() => {
+    if (!searchTerm) return clients
+    return clients.filter(
+      (c) =>
+        c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        c.company?.toLowerCase().includes(searchTerm.toLowerCase())
+    )
   }, [searchTerm, clients])
 
-  const fetchClients = async () => {
-    try {
-      const res = await fetch('/api/admin/clients')
-      if (res.ok) {
-        const data = await res.json()
-        setClients(data)
+  useEffect(() => {
+    async function fetchClients() {
+      try {
+        const res = await fetch('/api/admin/clients')
+        if (res.ok) {
+          const data = await res.json()
+          setClients(data)
+        }
+      } catch (err) {
+        console.error('Failed to fetch clients:', err)
+      } finally {
+        setLoading(false)
       }
-    } catch (err) {
-      console.error('Failed to fetch clients:', err)
-    } finally {
-      setLoading(false)
     }
-  }
+    fetchClients()
+  }, [reloadKey])
 
   const handleCreateClient = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -73,7 +67,7 @@ export default function ClientsPage() {
       if (res.ok) {
         setFormData({ name: '', email: '', company: '', phone: '' })
         setShowNewClientForm(false)
-        fetchClients()
+        setReloadKey((k) => k + 1)
       }
     } catch (err) {
       console.error('Failed to create client:', err)

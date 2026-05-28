@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState, Suspense } from 'react'
+import { useState, Suspense } from 'react'
 
 function CheckoutContent() {
   const searchParams = useSearchParams()
@@ -31,7 +31,7 @@ function CheckoutContent() {
       }).toString()}`
 
       router.push(briefUrl)
-    } catch (err) {
+    } catch {
       setError('Payment failed. Please try again.')
       setProcessing(false)
     }

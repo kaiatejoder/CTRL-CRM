@@ -15,7 +15,7 @@ export default function LoginPage() {
 
     try {
       loginSchema.parse(formData)
-    } catch (err) {
+    } catch {
       setError('Invalid email or password format')
       return
     }

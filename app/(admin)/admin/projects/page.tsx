@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Search, Plus, Edit } from 'lucide-react'
 
@@ -26,7 +26,6 @@ interface Client {
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([])
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([])
   const [clients, setClients] = useState<Record<string, Client>>({})
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -39,53 +38,50 @@ export default function ProjectsPage() {
     startDate: '',
     endDate: '',
   })
+  const [reloadKey, setReloadKey] = useState(0)
 
-  useEffect(() => {
-    fetchProjects()
-  }, [])
-
-  useEffect(() => {
+  const filteredProjects = useMemo(() => {
     let filtered = projects
-
     if (searchTerm) {
       filtered = filtered.filter((p) =>
         p.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
-
     if (statusFilter !== 'all') {
       filtered = filtered.filter((p) => p.status === statusFilter)
     }
-
-    setFilteredProjects(filtered)
+    return filtered
   }, [searchTerm, statusFilter, projects])
 
-  const fetchProjects = async () => {
-    try {
-      const [projectsRes, clientsRes] = await Promise.all([
-        fetch('/api/admin/projects'),
-        fetch('/api/admin/clients'),
-      ])
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const [projectsRes, clientsRes] = await Promise.all([
+          fetch('/api/admin/projects'),
+          fetch('/api/admin/clients'),
+        ])
 
-      if (projectsRes.ok) {
-        const projectsData = await projectsRes.json()
-        setProjects(projectsData)
-      }
+        if (projectsRes.ok) {
+          const projectsData = await projectsRes.json()
+          setProjects(projectsData)
+        }
 
-      if (clientsRes.ok) {
-        const clientsData = await clientsRes.json()
-        const clientsMap = clientsData.reduce((acc: Record<string, Client>, c: Client) => {
-          acc[c.id] = c
-          return acc
-        }, {})
-        setClients(clientsMap)
+        if (clientsRes.ok) {
+          const clientsData = await clientsRes.json()
+          const clientsMap = clientsData.reduce((acc: Record<string, Client>, c: Client) => {
+            acc[c.id] = c
+            return acc
+          }, {})
+          setClients(clientsMap)
+        }
+      } catch (err) {
+        console.error('Failed to fetch projects:', err)
+      } finally {
+        setLoading(false)
       }
-    } catch (err) {
-      console.error('Failed to fetch projects:', err)
-    } finally {
-      setLoading(false)
     }
-  }
+    fetchProjects()
+  }, [reloadKey])
 
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -99,7 +95,7 @@ export default function ProjectsPage() {
       if (res.ok) {
         setFormData({ name: '', clientId: '', status: 'active', startDate: '', endDate: '' })
         setShowNewForm(false)
-        fetchProjects()
+        setReloadKey((k) => k + 1)
       }
     } catch (err) {
       console.error('Failed to create project:', err)
