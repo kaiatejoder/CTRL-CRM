@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Search, Filter } from 'lucide-react'
 
@@ -18,10 +18,24 @@ interface Brief {
 
 export default function BriefsPage() {
   const [briefs, setBriefs] = useState<Brief[]>([])
-  const [filteredBriefs, setFilteredBriefs] = useState<Brief[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('all')
+
+  const filteredBriefs = useMemo(() => {
+    let filtered = briefs
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (b) =>
+          b.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          b.description?.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+    if (statusFilter !== 'all') {
+      filtered = filtered.filter((b) => b.status === statusFilter)
+    }
+    return filtered
+  }, [searchTerm, statusFilter, briefs])
 
   useEffect(() => {
     async function fetchBriefs() {
@@ -30,7 +44,6 @@ export default function BriefsPage() {
         if (res.ok) {
           const data = await res.json()
           setBriefs(data)
-          setFilteredBriefs(data)
         }
       } catch (err) {
         console.error('Failed to fetch briefs:', err)
@@ -41,24 +54,6 @@ export default function BriefsPage() {
 
     fetchBriefs()
   }, [])
-
-  useEffect(() => {
-    let filtered = briefs
-
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (b) =>
-          b.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          b.description?.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-
-    if (statusFilter !== 'all') {
-      filtered = filtered.filter((b) => b.status === statusFilter)
-    }
-
-    setFilteredBriefs(filtered)
-  }, [searchTerm, statusFilter, briefs])
 
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {

@@ -71,7 +71,7 @@ export default function PortalPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Welcome back, {session?.user?.name}</h1>
-        <p className="text-gray-600 mt-2">Here's what's happening with your projects and briefs</p>
+        <p className="text-gray-600 mt-2">Here&apos;s what&apos;s happening with your projects and briefs</p>
       </div>
 
       {error && (

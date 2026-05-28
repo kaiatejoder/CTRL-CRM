@@ -21,22 +21,21 @@ export default function NotificationsPage() {
   const [filter, setFilter] = useState<'all' | 'unread'>('all')
 
   useEffect(() => {
+    async function fetchNotifications() {
+      try {
+        const res = await fetch('/api/notifications')
+        if (res.ok) {
+          const data = await res.json()
+          setNotifications(data)
+        }
+      } catch (err) {
+        console.error('Failed to fetch notifications:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
     fetchNotifications()
   }, [])
-
-  const fetchNotifications = async () => {
-    try {
-      const res = await fetch('/api/notifications')
-      if (res.ok) {
-        const data = await res.json()
-        setNotifications(data)
-      }
-    } catch (err) {
-      console.error('Failed to fetch notifications:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const markAsRead = async (notificationId: string) => {
     try {
@@ -60,7 +59,7 @@ export default function NotificationsPage() {
     filter === 'unread' ? !n.read : true
   )
 
-  const getNotificationIcon = (type: string) => {
+  const getNotificationIcon = (_type: string) => {
     return <Bell size={18} className="text-blue-600" />
   }
 
@@ -104,7 +103,7 @@ export default function NotificationsPage() {
           <Bell className="mx-auto text-gray-400 mb-4" size={32} />
           <p className="text-gray-600">No notifications</p>
           {filter === 'unread' && (
-            <p className="text-sm text-gray-500 mt-2">You're all caught up!</p>
+            <p className="text-sm text-gray-500 mt-2">You&apos;re all caught up!</p>
           )}
         </div>
       ) : (

@@ -40,9 +40,9 @@ export function CheckoutComplete({ product, orderId, onCreateBrief }: CheckoutCo
       </div>
 
       <div className="checkout-next-step">
-        <h2>What's Next?</h2>
+        <h2>What&apos;s Next?</h2>
         <p>
-          Now let's create your design brief so our team can start working on your project.
+          Now let&apos;s create your design brief so our team can start working on your project.
         </p>
 
         <Link

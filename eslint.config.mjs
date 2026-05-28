@@ -12,7 +12,28 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated Prisma client — never lint generated code
+    "src/generated/**",
+    // Legacy vanilla JS — pre-CRM shop scripts
+    "public/js/**",
   ]),
+  // Legacy shop pages — pre-CRM code, strict TS rules not applicable
+  {
+    files: [
+      "app/(shop)/**",
+      "app/carrito/**",
+      "app/checkout/**",
+      "app/compra/**",
+      "app/contacto/**",
+      "app/empresa/**",
+      "app/productos/**",
+      "app/usuario/**",
+      "prisma/seed.ts",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
