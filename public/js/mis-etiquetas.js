@@ -15,39 +15,40 @@ class MiMenu extends HTMLElement {
         data-bs-target="#mainNav"
         aria-controls="mainNav"
         aria-expanded="false"
+        data-i18n-aria="nav.abrir"
         aria-label="Abrir menú">
       <span class="toggler-bar"></span>
       <span class="toggler-bar"></span>
     </button>
 
-      <!-- NAV ÚNICO -->
+    <!-- NAV ÚNICO -->
     <div class="collapse navbar-collapse" id="mainNav">
 
       <!-- LINKS -->
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 px-3 px-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link" href="/">INICIO</a>
+          <a class="nav-link" href="/" data-i18n="nav.inicio">INICIO</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/empresa">NOSOTROS</a>
+          <a class="nav-link" href="/empresa" data-i18n="nav.nosotros">NOSOTROS</a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-i18n="nav.servicios">
             SERVICIOS
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/productos">Todos los servicios</a></li>
-            <li><a class="dropdown-item" href="/productos#branding">Branding</a></li>
-            <li><a class="dropdown-item" href="/productos#plantillas">Plantillas</a></li>
-            <li><a class="dropdown-item" href="/productos#planes">Planes</a></li>
+            <li><a class="dropdown-item" href="/productos" data-i18n="nav.servicios.todos">Todos los servicios</a></li>
+            <li><a class="dropdown-item" href="/productos#branding" data-i18n="nav.servicios.branding">Branding</a></li>
+            <li><a class="dropdown-item" href="/productos#plantillas" data-i18n="nav.servicios.plantillas">Plantillas</a></li>
+            <li><a class="dropdown-item" href="/productos#planes" data-i18n="nav.servicios.planes">Planes</a></li>
           </ul>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/contacto">CONTACTO</a>
+          <a class="nav-link" href="/contacto" data-i18n="nav.contacto">CONTACTO</a>
         </li>
 
         <!-- CARRITO -->
@@ -64,7 +65,7 @@ class MiMenu extends HTMLElement {
 
         <!-- USUARIO -->
         <li class="nav-item">
-          <a href="/usuario" class="btn-carrito" aria-label="Perfil" title="Mi Perfil">
+          <a href="/usuario" class="btn-carrito" data-i18n-aria="nav.perfil" aria-label="Mi Perfil" title="Mi Perfil">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
           </svg>
@@ -84,13 +85,19 @@ class MiMenu extends HTMLElement {
     }
 
     connectedCallback() {
-        // Solo para evitar que el dropdown se cierre al hacer click dentro
         const dropdownMenu = this.querySelector('.dropdown-menu');
         if (dropdownMenu) {
-            dropdownMenu.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
+            dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
         }
+
+        import('./i18n.js').then(({ t, applyTranslations }) => {
+            applyTranslations();
+            this.querySelectorAll('[data-i18n-aria]').forEach(el => {
+                const val = t(el.getAttribute('data-i18n-aria'));
+                el.setAttribute('aria-label', val);
+                if (el.hasAttribute('title')) el.setAttribute('title', val);
+            });
+        });
     }
 }
 
@@ -114,37 +121,42 @@ class MiPie extends HTMLElement {
         </div>
       </div>
       <div class="col-lg-2 col-6">
-        <p class="footer-heading">Nosotros</p>
+        <p class="footer-heading" data-i18n="footer.heading.nosotros">Nosotros</p>
         <ul class="footer-links">
-          <li><a href="/empresa">Nosotros</a></li>
-          <li><a href="/empresa">Equipo</a></li>
-          <li><a href="/empresa">Proceso</a></li>
-          <li><a href="/contacto">Contacto</a></li>
+          <li><a href="/empresa" data-i18n="footer.nosotros">Nosotros</a></li>
+          <li><a href="/empresa" data-i18n="footer.equipo">Equipo</a></li>
+          <li><a href="/empresa" data-i18n="footer.proceso">Proceso</a></li>
+          <li><a href="/contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </div>
       <div class="col-lg-2 col-6">
-        <p class="footer-heading">Productos</p>
+        <p class="footer-heading" data-i18n="footer.heading.productos">Productos</p>
         <ul class="footer-links">
-          <li><a href="/productos#branding">Branding</a></li>
-          <li><a href="/productos#plantillas">Plantillas</a></li>
-          <li><a href="/productos#planes">Planes</a></li>
+          <li><a href="/productos#branding" data-i18n="footer.branding">Branding</a></li>
+          <li><a href="/productos#plantillas" data-i18n="footer.plantillas">Plantillas</a></li>
+          <li><a href="/productos#planes" data-i18n="footer.planes">Planes</a></li>
         </ul>
       </div>
       <div class="col-lg-4">
-        <p class="footer-heading">Horario de atención</p>
-        <p class="footer-schedule">Lun – Dom: Activos 24/7</p>
+        <p class="footer-heading" data-i18n="footer.heading.horario">Horario de atención</p>
+        <p class="footer-schedule" data-i18n="footer.schedule">Lun – Dom: Activos 24/7</p>
         <p class="footer-contact mt-3">
           <a href="mailto:hi@ctrlstudio.es">hi@ctrlstudio.es</a><br>
-          
         </p>
       </div>
     </div>
     <div class="footer-bottom mt-5">
       <span>&copy; 2026 CTRL Studio — Valencia, España</span>
-      <span>Todos los derechos reservados</span>
+      <span data-i18n="footer.derechos">Todos los derechos reservados</span>
     </div>
   </div>
 </footer>`;
+    }
+
+    connectedCallback() {
+        import('./i18n.js').then(({ applyTranslations }) => {
+            applyTranslations();
+        });
     }
 }
 window.customElements.define('mi-pie', MiPie);
