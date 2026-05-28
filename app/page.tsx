@@ -122,7 +122,7 @@ export default function HomePage() {
               <div className="row stats-row gy-4 mt-2">
                 <div className="col-4">
                   <div className="stat-item">
-                    <div className="stat-number">80+</div>
+                    <div className="stat-number">10+</div>
                     <div className="stat-label">PROYECTOS</div>
                   </div>
                 </div>

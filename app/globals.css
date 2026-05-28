@@ -12,9 +12,34 @@
 
 @font-face {
     font-family: 'PP Editorial New';
-    /*a name to be used later*/
-    src: URL("https://db.onlinewebfonts.com/c/926fcaaa8b66e0df67e176f329259711?family=PP+Editorial+New");
-    /*URL to font*/
+    src: url('/fonts/PPEditorialNew-Ultralight.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Editorial New';
+    src: url('/fonts/PPEditorialNew-UltralightItalic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Editorial New';
+    src: url('/fonts/PPEditorialNew-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Editorial New';
+    src: url('/fonts/PPEditorialNew-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
 }
 
 /* VARIABLES */
