@@ -128,7 +128,6 @@ export default function EmpresaPage() {
 
       <Script src="/js/mis-etiquetas.js" strategy="afterInteractive" />
       <Script src="/js/fondo.js" strategy="afterInteractive" />
-      <Script src="/js/proyectos.js" strategy="afterInteractive" />
     </>
   )
 }

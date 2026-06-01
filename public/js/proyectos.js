@@ -489,16 +489,18 @@ setupDragDrop('upload-zone-3', 'p-imagen-3');
 ================================================================ */
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
-document.addEventListener('mousemove', e => {
-    cur.style.left  = e.clientX + 'px';
-    cur.style.top   = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px';
-    ring.style.top  = e.clientY + 'px';
-});
-document.querySelectorAll('a, button, .proyecto-card, .add-proyecto-card').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('big'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
-});
+if (cur && ring) {
+    document.addEventListener('mousemove', e => {
+        cur.style.left  = e.clientX + 'px';
+        cur.style.top   = e.clientY + 'px';
+        ring.style.left = e.clientX + 'px';
+        ring.style.top  = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .proyecto-card, .add-proyecto-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cur.classList.add('big'));
+        el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+    });
+}
 
 /* ================================================================
    SCROLL REVEAL
@@ -514,6 +516,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 ================================================================ */
 function showToast(msg) {
     const t = document.getElementById('toast');
+    if (!t) return;
     t.textContent = msg; t.classList.add('show');
     clearTimeout(showToast._t);
     showToast._t = setTimeout(() => t.classList.remove('show'), 2500);
@@ -522,6 +525,12 @@ function showToast(msg) {
 /* ================================================================
    INIT
 ================================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-    renderGaleria();
-});
+function initProyectos() {
+    if (document.getElementById('carousel-root')) renderCarrusel();
+    if (typeof renderGaleria === 'function' && document.getElementById('galeria-root')) renderGaleria();
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProyectos);
+} else {
+    initProyectos();
+}
