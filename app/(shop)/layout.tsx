@@ -10,6 +10,14 @@ export default function ShopLayout({ children }: { children: React.ReactNode }) 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossOrigin="anonymous"
       />
+      <link rel="stylesheet" href="/css/styles.css" />
+      <link rel="stylesheet" href="/css/index-inline.css" />
+      <link rel="stylesheet" href="/css/productos-inline.css" />
+      <link rel="stylesheet" href="/css/carrito-inline.css" />
+      <link rel="stylesheet" href="/css/compra-inline.css" />
+      <link rel="stylesheet" href="/css/empresa.css" />
+      <link rel="stylesheet" href="/css/styles-contacto.css" />
+      <link rel="stylesheet" href="/css/usuario-inline.css" />
       {children}
       <Script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

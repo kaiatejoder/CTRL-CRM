@@ -29,3 +29,319 @@
     margin-bottom: 3rem;
     margin-top: 2rem;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────────────────────────── */
+.prod-hero {
+    padding: 8rem 0 2rem;
+}
+.prod-hero-title {
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+.prod-hero-title em {
+    font-style: italic;
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--rojo);
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Filter bar
+   ───────────────────────────────────────────────────────────── */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 2rem 0 0.5rem;
+}
+.filter-btn {
+    border: 1px solid var(--black-10);
+    background: transparent;
+    color: var(--txt);
+    padding: 0.55rem 1.1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.filter-btn:hover {
+    border-color: var(--txt);
+    background: var(--white-80);
+}
+.filter-btn.active {
+    background: var(--txt);
+    color: var(--white);
+    border-color: var(--txt);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Search
+   ───────────────────────────────────────────────────────────── */
+.busqueda-input {
+    border-radius: var(--radius-pill) !important;
+    border: 1px solid var(--black-10);
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+}
+.busqueda-input:focus {
+    outline: none;
+    border-color: var(--txt);
+    box-shadow: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Product cards
+   ───────────────────────────────────────────────────────────── */
+.prod-card {
+    background: var(--white);
+    border: 1px solid var(--black-08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.prod-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1.5rem 3rem -1rem rgba(0, 0, 0, 0.12);
+}
+.prod-thumb {
+    height: 11rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+.prod-body {
+    height: auto;
+    flex: 1;
+    padding: 1.3rem 1.4rem 1.4rem;
+    gap: 0.4rem;
+}
+.prod-categoria {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--txt-muted);
+}
+.prod-nombre {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--txt);
+}
+.prod-desc {
+    font-size: 0.88rem;
+    color: var(--txt-muted);
+    line-height: 1.5;
+    margin: 0.3rem 0 0.8rem;
+}
+.prod-footer {
+    border-top: 1px solid var(--black-08);
+    padding-top: 1rem;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.prod-precio {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--txt);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+.prod-precio small {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--txt-muted);
+    letter-spacing: 0;
+}
+
+/* Thumb palette */
+.pt1 { background: linear-gradient(135deg, var(--oscuro) 0%, var(--azul-dark) 100%); }
+.pt2 { background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo-dark) 100%); }
+.pt3 { background: linear-gradient(135deg, var(--azul) 0%, var(--oscuro) 100%); }
+.pt4 { background: linear-gradient(135deg, var(--oscuro-muy-dark) 0%, var(--azul) 100%); }
+.pt5 { background: linear-gradient(135deg, var(--rojo-dark) 0%, var(--rojo) 100%); }
+.pt6 { background: linear-gradient(135deg, var(--azul-dark) 0%, var(--rojo-dark) 100%); }
+
+/* ─────────────────────────────────────────────────────────────
+   Add button
+   ───────────────────────────────────────────────────────────── */
+.btn-add {
+    background: var(--rojo);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.btn-add:hover {
+    background: var(--rojo-dark);
+}
+.btn-add[disabled] {
+    background: var(--gris-mid);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Pagination
+   ───────────────────────────────────────────────────────────── */
+.pag-btn {
+    border: 1px solid var(--black-10);
+    background: transparent;
+    color: var(--txt);
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pag-btn:hover { border-color: var(--txt); }
+.pag-btn.active {
+    background: var(--txt);
+    color: var(--white);
+    border-color: var(--txt);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Plans section
+   ───────────────────────────────────────────────────────────── */
+.planes-section {
+    background: var(--oscuro-muy-dark);
+    color: var(--white);
+    padding: 5rem 0 6rem;
+    margin-top: 4rem;
+}
+.planes-section .section-label {
+    color: var(--azul);
+}
+.plan-card {
+    background: var(--white-5);
+    border: 1px solid var(--white-1);
+    border-radius: var(--radius);
+    padding: 2rem 1.8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+.plan-card:hover {
+    background: var(--white-1);
+    transform: translateY(-4px);
+}
+.plan-card.destacado {
+    background: var(--rojo);
+    border-color: var(--rojo);
+}
+.plan-card.destacado:hover {
+    background: var(--rojo-dark);
+}
+.plan-nombre {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--white);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.badge-pop {
+    background: var(--white);
+    color: var(--rojo);
+    font-size: 0.6rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.1em;
+}
+.plan-precio {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+}
+.plan-precio small {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white-65);
+}
+.plan-desc {
+    font-size: 0.9rem;
+    color: var(--white-65);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+}
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    flex: 1;
+}
+.plan-features li {
+    font-size: 0.85rem;
+    color: var(--white);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--white-1);
+}
+.plan-features li::before {
+    content: "→ ";
+    color: var(--azul);
+    margin-right: 0.4rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Toast
+   ───────────────────────────────────────────────────────────── */
+.ctrl-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    background: var(--txt);
+    color: var(--white);
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 1rem 3rem -0.5rem rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+}
+.ctrl-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
