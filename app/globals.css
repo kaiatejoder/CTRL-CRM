@@ -57,7 +57,7 @@
     --radius: 1.25rem;
     --radius-pill: 999rem;
     --oscuro-muy-dark: #1a1a2e;
-    --bg-muted: rgba(250, 250, 250, 0.75);
+    --bg-muted: rgba(250, 250, 250, 0.55);
     --white-60: rgba(255, 255, 255, 0.6);
     --white-75: rgba(255, 255, 255, 0.75);
     --white-80: rgba(255, 255, 255, 0.8);
@@ -142,7 +142,7 @@ img {
 /* ============================================================
    NAVBAR
    ============================================================ */
-.ctrl-navbar {
+.ctrl-navbar.ctrl-navbar {
     position: fixed;
     top: 1.5rem;
     left: 50%;
@@ -167,6 +167,10 @@ img {
 .menu-pill {
     background: rgba(235, 235, 232, 0.7);
     border-radius: var(--radius-pill);
+}
+
+.ctrl-navbar .navbar-collapse {
+    visibility: visible !important;
 }
 
 .ctrl-navbar .nav-link {

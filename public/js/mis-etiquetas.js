@@ -36,7 +36,7 @@ class MiMenu extends HTMLElement {
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-i18n="nav.servicios">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" data-i18n="nav.servicios">
             SERVICIOS
           </a>
           <ul class="dropdown-menu">

@@ -122,11 +122,8 @@ export default function ProductosPage() {
       <Script src="/js/mis-etiquetas.js" strategy="afterInteractive" />
       <Script src="/js/fondo.js" strategy="afterInteractive" />
       <Script src="/js/carrito.js" strategy="afterInteractive" />
-      <Script src="/js/productos.js" strategy="afterInteractive" />
-      <Script id="apply-translations" strategy="afterInteractive" dangerouslySetInnerHTML={{__html: `
-        import { applyTranslations } from '/js/i18n.js';
-        document.addEventListener('DOMContentLoaded', applyTranslations);
-      `}} />
+      <Script id="init-productos" strategy="afterInteractive" dangerouslySetInnerHTML={{__html: `import('/js/productos.js');`}} />
+      <Script id="apply-translations" strategy="afterInteractive" dangerouslySetInnerHTML={{__html: `import('/js/i18n.js').then(m => m.applyTranslations());`}} />
     </>
   )
 }

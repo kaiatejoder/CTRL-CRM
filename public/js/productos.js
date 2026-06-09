@@ -14,20 +14,19 @@ window.comprar = LibCarrito.comprar;
 
 // ── Inicio ─────────────────────────────────────────────────────────────────────
 
-document.addEventListener("DOMContentLoaded", function () {
-    inicio();
-});
+// DOMContentLoaded already fired when afterInteractive loads this module
+inicio();
 
 export function inicio() {
     LibCarrito.actualizarResumenCarrito();
     cargarCategorias();
-    obtenerProductos("obtenerProductos.html");   // carga todos al inicio
+    obtenerProductos("/api/productos");
 }
 
 // ── Categorías ─────────────────────────────────────────────────────────────────
 
 async function cargarCategorias() {
-    const categorias = await LibServlet.obtenerCategorias("obtenerCategorias.html");
+    const categorias = await LibServlet.obtenerCategorias("/api/categorias");
     dibujarFiltros(categorias);
 }
 
@@ -53,8 +52,8 @@ window.filtrarCategoria = function(catId, btn) {
     if (btn) btn.classList.add('active');
 
     const url = catId > 0
-        ? `obtenerProductos.html?categoria=${catId}`
-        : "obtenerProductos.html";
+        ? `/api/productos?categoria=${catId}`
+        : "/api/productos";
     obtenerProductos(url);
 };
 
@@ -169,19 +168,17 @@ window.irPagina = function(n) {
 window.buscar = function() {
     const q = (document.getElementById("buscador-input")?.value || '').trim();
     if (!q) return;
-    LibServlet.obtenerProductos(`buscarProductos.html?q=${encodeURIComponent(q)}`)
+    LibServlet.obtenerProductos(`/api/productos?q=${encodeURIComponent(q)}`)
         .then(lista => dibujarProductosPaginados(lista));
 };
 
 window.limpiarBusqueda = function() {
     const inp = document.getElementById("buscador-input");
     if (inp) inp.value = '';
-    LibServlet.obtenerProductos("obtenerProductos.html")
+    LibServlet.obtenerProductos("/api/productos")
         .then(lista => dibujarProductosPaginados(lista));
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("buscador-input")?.addEventListener("keydown", e => {
-        if (e.key === "Enter") window.buscar();
-    });
+document.getElementById("buscador-input")?.addEventListener("keydown", e => {
+    if (e.key === "Enter") window.buscar();
 });

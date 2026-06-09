@@ -8,5 +8,6 @@
       "port": 3303,
       "autoPort": false
     }
-  ]
+  ],
+  "autoVerify": false
 }
