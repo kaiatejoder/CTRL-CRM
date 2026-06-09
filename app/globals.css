@@ -8,13 +8,37 @@
 @font-face {
     font-family: 'Helvetica Now Display';
     src: url('https://db.onlinewebfonts.com/c/0976a2619014c5855690b7509fab4c6e?family=Helvetica+Now+Display');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'PP Editorial New';
-    /*a name to be used later*/
-    src: URL("https://db.onlinewebfonts.com/c/926fcaaa8b66e0df67e176f329259711?family=PP+Editorial+New");
-    /*URL to font*/
+    src: url("https://db.onlinewebfonts.com/c/926fcaaa8b66e0df67e176f329259711?family=PP+Editorial+New");
+    font-display: swap;
+}
+
+/* ============================================================
+   TAILWIND v4 THEME — expose tokens as utilities
+   ============================================================ */
+@theme {
+    --color-ctrl-bg: #FAFAFA;
+    --color-ctrl-gris-claro: #ebebe8;
+    --color-ctrl-gris-mid: #d1cece;
+    --color-ctrl-oscuro: #29274c;
+    --color-ctrl-oscuro-deep: #1a1a2e;
+    --color-ctrl-azul: #989fcb;
+    --color-ctrl-azul-dark: #4e5174;
+    --color-ctrl-rojo: #a50136;
+    --color-ctrl-rojo-dark: #710632;
+    --color-ctrl-verde: #4caf50;
+    --color-ctrl-verde-dark: #2e7d32;
+    --color-ctrl-naranja-dark: #e65100;
+    --color-ctrl-txt: #1a1a1a;
+    --color-ctrl-txt-muted: #666;
+    --radius-ctrl: 1.25rem;
+    --radius-ctrl-pill: 999rem;
+    --font-display: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-editorial: 'PP Editorial New', Georgia, serif;
 }
 
 /* VARIABLES */
@@ -82,7 +106,7 @@ img {
     max-width: 100%;
 }
 
-italic {
+.italic, em {
     font-family: 'PP Editorial New';
     font-style: italic;
     text-transform: uppercase;
