@@ -14,6 +14,7 @@ A modern Next.js-based CRM platform for design and development studios. Features
 ## Features
 
 ### Client Portal
+
 - View assigned briefs with filters (status, type)
 - Submit brief responses
 - Track project progress
@@ -21,6 +22,7 @@ A modern Next.js-based CRM platform for design and development studios. Features
 - View completed work
 
 ### Admin Dashboard
+
 - Client management (create, view, edit)
 - Project tracking and assignment
 - Brief creation and distribution
@@ -29,11 +31,13 @@ A modern Next.js-based CRM platform for design and development studios. Features
 - Dashboard statistics (clients, projects, briefs, responses)
 
 ### Email Integration
+
 - Automated brief delivery via email
 - Email logging and tracking
 - Nodemailer configuration for SMTP servers
 
 ### Notifications
+
 - Real-time in-app notifications
 - Mark as read/unread
 - Filter by read status

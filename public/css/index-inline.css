@@ -2,4 +2,50 @@
    Index Page - Estilos inline
    ═══════════════════════════════════════════════════════════════ */
 
-/* Estilos específicos para la página de inicio */
+.mockup-carousel-wrapper {
+    background: var(--gris-claro);
+    border-radius: 2rem;
+    padding: 1.5rem;
+    max-width: 22rem;
+    margin: 0 auto;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.12);
+}
+
+.mockup-carousel-wrapper .carousel {
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+
+.mockup-image {
+    border-radius: 1.2rem;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.mockup-carousel-wrapper .carousel-caption {
+    position: static;
+    padding: 1rem 0 0;
+    text-align: left;
+}
+
+.mockup-carousel-wrapper .carousel-indicators {
+    margin-bottom: 0.5rem;
+}
+
+.mockup-carousel-wrapper .carousel-control-prev,
+.mockup-carousel-wrapper .carousel-control-next {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    opacity: 1;
+}
+
+.about-intro-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--txt-muted);
+    margin: 0;
+}

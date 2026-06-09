@@ -4,7 +4,7 @@
     ================================================================ */
 
     /* ── CURSOR PERSONALIZADO ── */
-    body { cursor: none; }
+    body.empresa-page { cursor: none; }
     .cursor {
         position: fixed;
         width: 0.7rem; height: 0.7rem;
