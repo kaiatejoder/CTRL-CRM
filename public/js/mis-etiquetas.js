@@ -5,7 +5,7 @@ class MiMenu extends HTMLElement {
 <nav class="navbar navbar-expand-lg ctrl-navbar">
   <div class="container-fluid px-0">
     <a class="navbar-brand ps-3" href="/">
-      <img src="img/LOGO.svg" class="logo-svg" alt="CTRL Studio">
+      <img src="/img/LOGO.svg" class="logo-svg" alt="CTRL Studio">
     </a>
 
     <!-- BOTÓN MÓVIL -->
@@ -101,7 +101,9 @@ class MiMenu extends HTMLElement {
     }
 }
 
-window.customElements.define('mi-menu', MiMenu);
+if (!customElements.get('mi-menu')) {
+    customElements.define('mi-menu', MiMenu);
+}
 
 class MiPie extends HTMLElement {
     constructor() {
@@ -111,7 +113,7 @@ class MiPie extends HTMLElement {
   <div class="container">
     <div class="row gy-4">
       <div class="col-lg-4">
-        <img src="img/LOGO.svg" class="logo-svg" alt="CTRL Studio" style="height: 2rem; width: auto; color: var(--azul);">
+        <img src="/img/LOGO.svg" class="logo-svg" alt="CTRL Studio" style="height: 2rem; width: auto; color: var(--azul);">
         <p class="footer-tagline mt-3">Purpose beyond px</p>
         <div class="footer-socials mt-3">
           <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
@@ -159,7 +161,9 @@ class MiPie extends HTMLElement {
         });
     }
 }
-window.customElements.define('mi-pie', MiPie);
+if (!customElements.get('mi-pie')) {
+    customElements.define('mi-pie', MiPie);
+}
 
 class LangSelector extends HTMLElement {
     connectedCallback() {
