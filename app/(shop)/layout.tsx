@@ -1,5 +1,6 @@
 import React from 'react'
 import Script from 'next/script'
+import './shop.css'
 
 export default function ShopLayout({ children }: { children: React.ReactNode }) {
   return (
