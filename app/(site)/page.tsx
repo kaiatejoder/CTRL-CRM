@@ -10,6 +10,7 @@ export default function HomePage() {
 
   return (
     <>
+      <link rel="stylesheet" href="/css/index-inline.css" />
       <div className="bg-dots"></div>
       <mi-menu></mi-menu>
 

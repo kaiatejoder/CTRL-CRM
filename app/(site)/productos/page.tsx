@@ -5,6 +5,7 @@ import Script from 'next/script'
 export default function ProductosPage() {
   return (
     <>
+      <link rel="stylesheet" href="/css/productos-inline.css" />
       <div className="bg-dots"></div>
       <mi-menu></mi-menu>
 

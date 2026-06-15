@@ -37,6 +37,7 @@
     --color-ctrl-txt-muted: #666;
     --radius-ctrl: 1.25rem;
     --radius-ctrl-pill: 999rem;
+    --font-sans: var(--font-geist-sans), 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-display: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-editorial: 'PP Editorial New', Georgia, serif;
 }
@@ -81,6 +82,280 @@
     --naranja-dark: #e65100;
 }
 
+/* ============================================================
+   CTRL STUDIO — CANONICAL DESIGN TOKENS
+   ctrlstudio-tokens.css  ·  v1.0  ·  2026
+   ============================================================
+   Additive: does not override the legacy variables above.
+   --font-sans / --font-editorial already defined in @theme.
+   ============================================================ */
+:root {
+
+  /* ──────────────────────────────────────────────
+     BRAND COLORS — Core palette
+  ────────────────────────────────────────────── */
+
+  /* Primary / Accent — Crimson Red */
+  --color-brand-primary:      #a50136;   /* Main CTA, highlights, accents */
+  --color-brand-primary-dark: #710632;   /* Hover states, deepened CTAs   */
+  --color-brand-primary-10:   rgba(165, 1, 54, 0.10);
+  --color-brand-primary-20:   rgba(165, 1, 54, 0.20);
+
+  /* Secondary — Periwinkle Blue */
+  --color-brand-secondary:      #989fcb;   /* Focus rings, links, active pills */
+  --color-brand-secondary-dark: #4e5174;   /* Hover on secondary, sidebar accent */
+  --color-brand-secondary-06:   rgba(152, 159, 203, 0.06);
+  --color-brand-secondary-20:   rgba(152, 159, 203, 0.20);
+
+  /* Dark — Navy Purple */
+  --color-brand-dark:      #29274c;   /* Footer bg, dark sections */
+  --color-brand-dark-deep: #1a1a2e;   /* Deepest dark (hero gradients) */
+  --color-brand-darkest:   #0d0c1a;   /* Absolute dark (mision bg, void theme) */
+
+  /* ──────────────────────────────────────────────
+     SURFACE COLORS — Backgrounds & Cards
+  ────────────────────────────────────────────── */
+
+  --color-bg:          #fafafa;   /* Page background */
+  --color-bg-alt:      #f4f4f2;   /* Admin panel background */
+  --color-bg-warm:     #f8f6f2;   /* Empresa / portfolio sections */
+  --color-bg-cream:    #f5f0e8;   /* MORPHEX theme background */
+  --color-bg-muted:    rgba(250, 250, 250, 0.75);   /* Navbar frosted bg */
+
+  --color-surface:     #ffffff;   /* Cards, panels, modals */
+  --color-surface-muted: rgba(255, 255, 255, 0.80); /* Form inputs */
+
+  /* ──────────────────────────────────────────────
+     NEUTRAL GRAYS — Borders, dividers, fills
+  ────────────────────────────────────────────── */
+
+  --color-gray-100: #ebebe8;   /* light section bg, table header */
+  --color-gray-200: #d1cece;   /* borders, dividers, input strokes */
+  --color-gray-400: #888888;   /* Muted text (admin) */
+  --color-gray-500: #666666;   /* secondary text */
+
+  /* ──────────────────────────────────────────────
+     TEXT COLORS
+  ────────────────────────────────────────────── */
+
+  --color-text:         #1a1a1a;   /* Primary body text */
+  --color-text-muted:   #666666;   /* Secondary / captions */
+  --color-text-inverted: #ffffff;  /* Text on dark backgrounds */
+
+  /* ──────────────────────────────────────────────
+     SEMANTIC COLORS — Status / Feedback
+  ────────────────────────────────────────────── */
+
+  --color-success:      #4caf50;
+  --color-success-dark: #2e7d32;
+  --color-success-bg:   rgba(76, 175, 80, 0.12);
+
+  --color-warning:      #ff9800;
+  --color-warning-dark: #e65100;
+  --color-warning-bg:   rgba(255, 152, 0, 0.12);
+
+  --color-danger:       #a50136;   /* Same as brand primary */
+  --color-danger-dark:  #710632;
+  --color-danger-bg:    rgba(165, 1, 54, 0.10);
+
+  /* ──────────────────────────────────────────────
+     ALPHA WHITES — Overlay / Glassmorphism
+  ────────────────────────────────────────────── */
+
+  --color-white-05:  rgba(255, 255, 255, 0.05);
+  --color-white-10:  rgba(255, 255, 255, 0.10);
+  --color-white-20:  rgba(255, 255, 255, 0.20);
+  --color-white-30:  rgba(255, 255, 255, 0.30);
+  --color-white-35:  rgba(255, 255, 255, 0.35);
+  --color-white-50:  rgba(255, 255, 255, 0.50);
+  --color-white-60:  rgba(255, 255, 255, 0.60);
+  --color-white-65:  rgba(255, 255, 255, 0.65);
+  --color-white-75:  rgba(255, 255, 255, 0.75);
+  --color-white-80:  rgba(255, 255, 255, 0.80);
+
+  /* ──────────────────────────────────────────────
+     ALPHA BLACKS — Shadows / Overlays
+  ────────────────────────────────────────────── */
+
+  --color-black-04:  rgba(0, 0, 0, 0.04);
+  --color-black-08:  rgba(0, 0, 0, 0.08);
+  --color-black-10:  rgba(0, 0, 0, 0.10);
+  --color-black-12:  rgba(0, 0, 0, 0.12);
+  --color-black-18:  rgba(0, 0, 0, 0.18);
+
+  /* ──────────────────────────────────────────────
+     TYPOGRAPHY — Scale (fluid using clamp)
+  ────────────────────────────────────────────── */
+
+  --text-xs:    0.65rem;    /* 10.4px — badges, micro labels */
+  --text-sm:    0.70rem;    /* 11.2px — section labels, table headers, captions */
+  --text-base:  0.88rem;    /* 14px   — table cells, footer links */
+  --text-md:    0.90rem;    /* 14.4px — body text */
+  --text-lg:    1.00rem;    /* 16px   — subtitles, hero subtitle */
+  --text-xl:    1.10rem;    /* 17.6px — card titles, sidebar items */
+  --text-2xl:   1.50rem;    /* 24px   — service names */
+  --text-3xl:   2.50rem;    /* 40px   — stat numbers */
+
+  /* Fluid hero headings */
+  --text-hero:  clamp(3rem, 8vw, 6rem);
+  --text-about: clamp(2.5rem, 6vw, 4.5rem);
+  --text-cta:   clamp(2.2rem, 6vw, 5rem);
+
+  /* ──────────────────────────────────────────────
+     TYPOGRAPHY — Weight & Letter-spacing
+  ────────────────────────────────────────────── */
+
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:    700;
+
+  --letter-xs:   0.05em;   /* Buttons, nav links */
+  --letter-sm:   0.08em;   /* Nav links, stat labels */
+  --letter-md:   0.10em;   /* Form labels */
+  --letter-lg:   0.12em;   /* Section labels, table headers */
+  --letter-xl:   0.15em;   /* Sidebar section labels */
+  --letter-2xl:  0.20em;   /* Section labels (--section-label) */
+
+  /* ──────────────────────────────────────────────
+     LINE HEIGHT
+  ────────────────────────────────────────────── */
+
+  --leading-none:  1.0;
+  --leading-tight: 1.05;
+  --leading-snug:  1.4;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* Negative for large headings */
+  --tracking-hero:  -0.03em;
+  --tracking-about: -0.02em;
+
+  /* ──────────────────────────────────────────────
+     BORDER RADIUS
+  ────────────────────────────────────────────── */
+
+  --radius-xs:   0.45rem;   /* Table action buttons */
+  --radius-sm:   0.60rem;   /* Admin form inputs */
+  --radius-md:   0.75rem;   /* Form inputs */
+  --radius-lg:   0.875rem;  /* Admin cards, modals */
+  --radius-xl:   1.00rem;   /* Admin bento items */
+  --radius-2xl:  1.20rem;   /* Work cards, project cards */
+  --radius-3xl:  1.25rem;   /* Frost cards */
+  --radius-4xl:  2.00rem;   /* Mockup cards */
+
+  /* ──────────────────────────────────────────────
+     SPACING — Base scale (1 unit = 0.25rem = 4px)
+  ────────────────────────────────────────────── */
+
+  --space-1:  0.25rem;    /* 4px  */
+  --space-2:  0.5rem;     /* 8px  */
+  --space-3:  0.75rem;    /* 12px */
+  --space-4:  1.00rem;    /* 16px */
+  --space-5:  1.25rem;    /* 20px */
+  --space-6:  1.50rem;    /* 24px */
+  --space-8:  2.00rem;    /* 32px */
+  --space-10: 2.50rem;    /* 40px */
+  --space-12: 3.00rem;    /* 48px */
+  --space-16: 4.00rem;    /* 64px */
+  --space-20: 5.00rem;    /* 80px */
+  --space-24: 6.00rem;    /* 96px */
+  --space-28: 7.00rem;    /* 112px */
+  --space-32: 8.00rem;    /* 128px */
+
+  /* ──────────────────────────────────────────────
+     LAYOUT
+  ────────────────────────────────────────────── */
+
+  --navbar-height:      5rem;
+  --page-top-padding:   6rem;      /* .page-wrapper */
+  --sidebar-width:      15rem;     /* Admin sidebar */
+  --container-max:      78rem;     /* Navbar max-width */
+
+  /* ──────────────────────────────────────────────
+     BORDERS
+  ────────────────────────────────────────────── */
+
+  --border-thin:   0.0625rem;    /* 1px  */
+  --border-base:   0.09375rem;   /* 1.5px */
+  --border-thick:  0.1875rem;    /* 3px — stat accent left-border */
+
+  /* ──────────────────────────────────────────────
+     SHADOWS
+  ────────────────────────────────────────────── */
+
+  --shadow-sm:   0 0.5rem 1.5rem var(--color-black-10);
+  --shadow-md:   0 1rem 2rem var(--color-black-10);
+  --shadow-lg:   0 1rem 3rem var(--color-black-10);
+  --shadow-xl:   0 2rem 5rem rgba(0, 0, 0, 0.12);
+  --shadow-2xl:  0 3rem 8rem rgba(0, 0, 0, 0.25);
+  --shadow-brand: 0 1rem 2.5rem rgba(165, 1, 54, 0.4);
+  --shadow-focus: 0 0 0 0.1875rem var(--color-brand-secondary-20);
+
+  /* ──────────────────────────────────────────────
+     BACKDROP FILTERS
+  ────────────────────────────────────────────── */
+
+  --blur-navbar: blur(1.2rem);
+  --blur-card:   blur(1.5rem);
+
+  /* ──────────────────────────────────────────────
+     TRANSITIONS
+  ────────────────────────────────────────────── */
+
+  --transition-fast:   all 0.15s ease;
+  --transition-base:   all 0.20s ease;
+  --transition-slow:   all 0.30s ease;
+  --transition-reveal: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                       transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ──────────────────────────────────────────────
+     BACKGROUND PATTERNS
+  ────────────────────────────────────────────── */
+
+  --bg-dots-size:   1.4rem 1.4rem;
+  --bg-dots-color:  rgba(0, 0, 0, 0.10);
+  --bg-dots-radius: 0.07rem;
+
+  /* ──────────────────────────────────────────────
+     Z-INDEX SCALE
+  ────────────────────────────────────────────── */
+
+  --z-base:    0;
+  --z-raised:  10;
+  --z-dropdown: 50;
+  --z-topbar:  100;
+  --z-sidebar: 100;
+  --z-navbar:  1000;
+  --z-modal:   9000;
+  --z-cursor:  9999;
+
+  /* ──────────────────────────────────────────────
+     GRADIENT PRESETS — Work Cards
+  ────────────────────────────────────────────── */
+
+  --gradient-card-1: linear-gradient(135deg, var(--color-brand-dark) 0%, var(--color-brand-secondary-dark) 100%);
+  --gradient-card-2: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-primary-dark) 100%);
+  --gradient-card-3: linear-gradient(135deg, var(--color-brand-secondary) 0%, var(--color-brand-dark) 100%);
+  --gradient-card-4: linear-gradient(135deg, var(--color-brand-dark-deep) 0%, var(--color-brand-secondary) 100%);
+  --gradient-card-5: linear-gradient(135deg, var(--color-brand-primary-dark) 0%, var(--color-brand-primary) 100%);
+  --gradient-avatar: linear-gradient(135deg, var(--color-brand-dark), var(--color-brand-secondary));
+}
+
+/* ──────────────────────────────────────────────────────
+   DARK THEME OVERRIDE (add [data-theme="dark"] to <html>)
+────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-bg:        #0d0c1a;
+  --color-bg-alt:    #111020;
+  --color-surface:   rgba(255, 255, 255, 0.05);
+  --color-text:      #f0f0f5;
+  --color-text-muted: rgba(240, 240, 245, 0.5);
+  --color-gray-100:  rgba(255, 255, 255, 0.06);
+  --color-gray-200:  rgba(255, 255, 255, 0.10);
+  --color-bg-muted:  rgba(13, 12, 26, 0.75);
+}
+
 /* RESET BASE */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -91,7 +366,7 @@ html {
 }
 
 body {
-    font-family: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
     background-color: var(--bg);
     color: var(--txt);
     overflow-x: hidden;

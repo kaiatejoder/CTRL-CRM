@@ -106,6 +106,7 @@ export default function CarritoPage() {
 
   return (
     <>
+      <link rel="stylesheet" href="/css/carrito-inline.css" />
       <div className="bg-dots"></div>
       <mi-menu></mi-menu>
 

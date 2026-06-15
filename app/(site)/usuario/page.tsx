@@ -147,6 +147,9 @@ export default function UsuarioPage() {
 
   return (
     <>
+      <link rel="stylesheet" href="/css/usuario-inline.css" />
+      <link rel="stylesheet" href="/css/usuario-dashboard.css" />
+      <link rel="stylesheet" href="/css/usuario-panels.css" />
       <div className="bg-dots"></div>
       <mi-menu></mi-menu>
 

@@ -30,7 +30,7 @@
         transform: translate(-50%,-50%);
         transition: all 0.18s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-    a, button, [role="button"], .proyecto-card { cursor: none; }
+    .empresa-page a, .empresa-page button, .empresa-page [role="button"], .empresa-page .proyecto-card { cursor: none; }
 
     /* ── HERO ── */
     .port-hero {

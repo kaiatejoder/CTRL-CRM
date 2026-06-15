@@ -107,6 +107,7 @@ export default function CompraPage() {
 
   return (
     <>
+      <link rel="stylesheet" href="/css/compra-inline.css" />
       <div className="bg-dots"></div>
       <mi-menu></mi-menu>
 

@@ -32,6 +32,7 @@ export default function ContactoPage() {
 
   return (
     <>
+      <link rel="stylesheet" href="/css/styles-contacto.css" />
       <div className="bg-dots"></div>
       <mi-menu></mi-menu>
 
